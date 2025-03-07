@@ -10,5 +10,6 @@ Story Stream – это простой RESTful блог-сервис, позво
 ---
 
 **Ссылки**
+- API-контракты: [Rest API контракты](./rest-api-contacts.md)
 - Лабораторные работы: https://github.com/Discipliny/dev_ops
 - Канбан: https://github.com/users/IvanMonichev/projects/4
