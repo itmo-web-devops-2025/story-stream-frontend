@@ -1,10 +1,7 @@
-import HeaderDefault from '@/features/header-default/header-default'
+import appRouter from '@/pages/app.router'
 import type { FC } from 'react'
+import { RouterProvider } from 'react-router'
 
-const App: FC = () => {
-  console.log(`App component is working`)
-
-  return <HeaderDefault />
-}
+const App: FC = () => <RouterProvider router={appRouter} />
 
 export default App
