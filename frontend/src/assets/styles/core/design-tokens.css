@@ -1,0 +1,36 @@
+:root {
+  /* Цветовая палитра */
+  --primary-color: #3498db; /* Основной цвет */
+  --secondary-color: #2ecc71; /* Вторичный цвет */
+  --background-color: #f4f4f4; /* Цвет фона */
+  --text-color: #333333; /* Цвет текста */
+  --border-color: #ddd; /* Цвет границ */
+  --link-color: #3498db; /* Цвет ссылок */
+  --error-color: #e74c3c; /* Цвет ошибок */
+
+  /* Размеры */
+  --font-size-small: 12px;
+  --font-size-base: 16px;
+  --font-size-large: 20px;
+
+  --line-height-small: 1.4;
+  --line-height-base: 1.6;
+  --line-height-large: 1.8;
+
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+
+  /* Шрифты */
+  --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+
+  /* Отступы и маргины */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Прочее */
+  --transition-duration: 0.3s;
+}
