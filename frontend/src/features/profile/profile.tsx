@@ -1,6 +1,8 @@
 import useGetQuery from '@/hooks/use-get-query.hook'
+import { getArticles } from '@/services/article.api'
 import { getUser } from '@/services/user.api'
 import ButtonIcon from '@/shared/controllers/button-icon/button-icon'
+import { Article } from '@/types/article.interface'
 import { User } from '@/types/user.interface'
 import { capitalizeWords } from '@/utils/capitalize-word.util'
 import type { FC } from 'react'
@@ -9,8 +11,9 @@ import styles from './profile.module.css'
 
 const Profile: FC = () => {
   const { data: user } = useGetQuery<User>(getUser)
+  const { data: articles } = useGetQuery<Article[]>(getArticles)
 
-  console.log(user)
+  console.log(articles)
 
   return (
     <section>
