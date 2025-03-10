@@ -1,12 +1,12 @@
 import HeaderDefault from '@/features/header-default/header-default'
-import type { FC } from 'react'
+import Profile from '@/features/profile/profile'
+import Page from '@/shared/layouts/page/page'
 
-type TProps = {}
-
-const Home: FC<TProps> = () => {
-  console.log(`Home component is working`)
-
-  return <HeaderDefault />
-}
+const Home = () => (
+  <Page>
+    <HeaderDefault />
+    <Profile />
+  </Page>
+)
 
 export default Home

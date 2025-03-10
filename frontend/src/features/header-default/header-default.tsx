@@ -12,7 +12,7 @@ const HeaderDefault: FC = () => {
       <NavMenu>
         <NavMenu.Item to='/'>Главная</NavMenu.Item>
         <NavMenu.Item to='/sign-in'>Войти</NavMenu.Item>
-        <NavMenu.Item to='/sign-up'>Зарегистрироваться</NavMenu.Item>
+        <NavMenu.Item to='/sign-up'>Регистрация</NavMenu.Item>
       </NavMenu>
       {/*<Burger />*/}
     </Header>
