@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: block;
+}
+
+.link {
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--secondary-color);
+  padding: 12px;
+  transition: color var(--transition-duration);
+}
+
+.link:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}
