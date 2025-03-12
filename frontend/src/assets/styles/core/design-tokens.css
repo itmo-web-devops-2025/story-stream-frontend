@@ -16,7 +16,7 @@
   --line-height-large: 1.8;
 
   --border-radius-inner: 11px;
-  --border-radius-outer: calc(var(--border-radius-inner) + var(--space-sm));
+  --border-radius-outer: 11px;
 
   /* Шрифты */
   --font-family-sans: 'Helvetica Neue', Arial, sans-serif;

@@ -1,4 +1,5 @@
-import type { FC, PropsWithChildren } from 'react'
+import ButtonIcon from '@/shared/controllers/button-icon/button-icon'
+import { FC, PropsWithChildren, useEffect } from 'react'
 
 import styles from './modal.module.css'
 
@@ -14,14 +15,35 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
 }) => {
   console.log(`Modal component is working`)
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   return (
-    <div className={styles.modalOverlay} onClick={onClose} data-opened={open}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.modalClose} onClick={onClose}>
-          &times;
-        </button>
-        {children}
-      </div>
+    <div className={styles.modalOverlay}>
+      <dialog
+        className={styles.container}
+        open={open}
+        onClick={onClose}
+        aria-labelledby='dialog-name'
+      >
+        <h2 id='dialog-name' className={styles.title}>
+          Заголовок
+        </h2>
+        <div className={styles.content}>{children}</div>
+        <ButtonIcon
+          className={styles['button']}
+          icon={'xmark'}
+          onClick={onClose}
+        />
+      </dialog>
     </div>
   )
 }

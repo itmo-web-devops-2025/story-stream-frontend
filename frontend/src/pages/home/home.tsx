@@ -7,7 +7,7 @@ const Home = () => (
   <Page>
     <HeaderDefault />
     <Profile />
-    <Modal />
+    <Modal open={true} />
   </Page>
 )
 
