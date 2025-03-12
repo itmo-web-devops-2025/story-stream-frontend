@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  gap: var(--gap-global);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  color: var(--secondary-color);
+  line-height: 1;
+  margin: 0 0 var(--space-md);
+  font-weight: 400;
+}
+
+.content p {
+  font-size: var(--font-size-content);
+  line-height: 1.2;
+}
+
+.articles {
+  flex: 1 0 70%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.aside {
+  flex: 0 1 30%;
+}
+
+.footer p {
+  color: var(--text-color-description);
+  font-size: var(--font-size-content);
+}

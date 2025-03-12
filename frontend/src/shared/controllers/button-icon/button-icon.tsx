@@ -1,3 +1,4 @@
+import Icon from '@/shared/core/icon/icon'
 import cn from 'classnames'
 import type { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react'
 import styles from './button-icon.module.css'
@@ -14,7 +15,7 @@ const ButtonIcon: FC<TProps> = ({ icon, className, ...props }) => {
 
   return (
     <button {...props} className={cn(className, styles['button'])}>
-      <i className={`lni lni-${icon}`}></i>
+      <Icon icon={icon} />
     </button>
   )
 }

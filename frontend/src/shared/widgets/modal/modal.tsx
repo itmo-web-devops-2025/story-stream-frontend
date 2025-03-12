@@ -27,7 +27,7 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
   }, [open])
 
   return (
-    <div className={styles.modalOverlay}>
+    <div className={styles.modalOverlay} data-open={open}>
       <dialog
         className={styles.container}
         open={open}
