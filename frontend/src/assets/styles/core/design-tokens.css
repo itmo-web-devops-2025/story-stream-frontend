@@ -15,15 +15,13 @@
   --line-height-base: 1.6;
   --line-height-large: 1.8;
 
-  --border-radius-small: 4px;
-  --border-radius-medium: 8px;
-  --border-radius-large: 12px;
+  --border-radius-inner: 11px;
+  --border-radius-outer: calc(var(--border-radius-inner) + var(--space-sm));
 
   /* Шрифты */
   --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
 
   /* Отступы и маргины */
-  --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
@@ -33,8 +31,8 @@
   --transition-duration: 0.3s;
 
   --screen-lg: 1200px; /* Десктопы */
-  --screen-md: 992px;  /* Ноутбуки, планшеты в альбомной ориентации */
-  --screen-sm: 768px;  /* Планшеты и маленькие экраны */
-  --screen-xs: 480px;  /* Мобильные телефоны */
+  --screen-md: 992px; /* Ноутбуки, планшеты в альбомной ориентации */
+  --screen-sm: 768px; /* Планшеты и маленькие экраны */
+  --screen-xs: 480px; /* Мобильные телефоны */
   --screen-xxs: 360px; /* Очень маленькие телефоны */
 }
