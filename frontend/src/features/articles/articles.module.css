@@ -12,10 +12,21 @@
 
 .title {
   font-size: var(--font-size-title);
-  color: var(--secondary-color);
+
   line-height: 1;
   margin: 0;
   font-weight: 400;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: color 0.3s
+}
+
+.link:hover {
+  color: var(--primary-color);
 }
 
 .content p {
@@ -29,7 +40,7 @@
 
 .articles {
   flex: 1 0 70%;
-  padding: 0;
+  padding: 12px 0 0;
   margin: 0;
   list-style: none;
   display: flex;
@@ -70,6 +81,7 @@
   border-radius: var(--border-radius-outer);
   color: var(--text-color);
   padding: 0 12px;
+  transition: color border-color var(--transition-duration);
 }
 
 .footer-item:hover {

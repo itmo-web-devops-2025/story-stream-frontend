@@ -2,24 +2,30 @@
   flex: 0 1 30%;
   position: sticky;
   top: 0;
+  padding: 12px 0 0;
 }
 
 .aside-list {
   display: flex;
   flex-direction: column;
   list-style: none;
-  padding: 12px 12px 12px 0;
-  gap: 6px;
+  gap: 12px;
   margin: 0;
+  padding: 0;
 }
 
 .aside-item {
   text-decoration: none;
   font-size: var(--font-size-content);
-
 }
 
 .aside-item a {
   text-decoration: none;
   color: var(--text-color);
+  padding: 12px 12px 12px 0;
+  transition: color var(--transition-duration);
+}
+
+.aside-item a:hover {
+  color: var(--primary-color);
 }
