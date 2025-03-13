@@ -8,7 +8,12 @@ const Home = () => (
   <Page>
     <HeaderDefault />
     <Profile />
-    <Articles />
+    <Articles>
+      <Articles.Item />
+      <Articles.Item />
+      <Articles.Item />
+      <Articles.Item />
+    </Articles>
     <Modal />
   </Page>
 )

@@ -10,7 +10,7 @@ const HeaderDefault: FC = () => {
     <Header>
       <Logo />
       <NavMenu>
-        <NavMenu.Item to='/'>Главная</NavMenu.Item>
+        {/*<NavMenu.Item to='/'>Главная</NavMenu.Item>*/}
         <NavMenu.Item to='/sign-in'>Войти</NavMenu.Item>
         <NavMenu.Item to='/sign-up'>Регистрация</NavMenu.Item>
       </NavMenu>
