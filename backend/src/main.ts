@@ -4,9 +4,10 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 import * as process from 'process';
 import { AppModule } from '@/app.module';
 import { SwaggerModule } from '@nestjs/swagger';
-import { CORS_OPTIONS } from '@/config/cors.config';
-import { SWAGGER_CONFIG } from '@/config/swagger.config';
-import { VALIDATION_PIPE } from '@/config/validation.config';
+import { CORS_OPTIONS } from '@/configs/cors.config';
+import { SWAGGER_CONFIG } from '@/configs/swagger.config';
+import { VALIDATION_PIPE } from '@/configs/validation.config';
+import fastifyCookie from '@fastify/cookie';
 
 async function bootstrap() {
   const adapter = new FastifyAdapter();
@@ -18,6 +19,10 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, SWAGGER_CONFIG);
   SwaggerModule.setup('api-docs', app, document);
+
+  await app.register(fastifyCookie, {
+    secret: process.env.COOKIE_SECRET,
+  });
 
   const port = +(process.env.SERVER_PORT || 3000);
 
