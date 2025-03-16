@@ -3,10 +3,7 @@ import Header from '@/shared/layouts/header/header'
 import NavMenu from '@/shared/widgets/nav-menu/nav-menu'
 import type { FC } from 'react'
 
-const HeaderDefault: FC = () => {
-  console.log(`HeaderDefault component is working`)
-
-  return (
+const HeaderDefault: FC = () => (
     <Header>
       <Logo />
       <NavMenu>
@@ -17,6 +14,5 @@ const HeaderDefault: FC = () => {
       {/*<Burger />*/}
     </Header>
   )
-}
 
 export default HeaderDefault

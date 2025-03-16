@@ -1,7 +1,7 @@
 :root {
   --primary-color: #b20d0d; /* Основной цвет */
   --hover-color: #b20d0d;
-  --secondary-color: #333333;
+  --secondary-color: #131313;
   --background-color: #f4f4f4; /* Цвет фона */
   --text-color: #333333; /* Цвет текста */
   --text-color-description: #B6AA8D;
@@ -11,7 +11,7 @@
   --line-height-base: 1.6;
   --line-height-large: 1.8;
 
-  --border-radius-inner: 11px;
+  --border-radius-inner: 6px;
   --border-radius-outer: 11px;
 
   /* Шрифты */
@@ -35,6 +35,7 @@
   --font-size-title: 48px;
   --font-size-content: 24px;
   --font-size-little: 16px;
+  --font-size-middle: 20px;
 
   --gap-global: 40px;
 }

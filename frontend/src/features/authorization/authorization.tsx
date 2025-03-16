@@ -1,8 +1,12 @@
+import Button from '@/shared/controllers/button/button'
+import Input from '@/shared/controllers/input/input'
+import AppLink from '@/shared/controllers/link/app-link'
+import Card from '@/shared/widgets/card/card'
+import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import styles from './AuthForm.module.css'
 
 const schema = z.object({
   email: z.string().email('Введите корректный email'),
@@ -10,49 +14,38 @@ const schema = z.object({
 })
 
 const Authorization: FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting }
-  } = useForm({
-    resolver: zodResolver(schema)
+  const form = useForm({
+    resolver: zodResolver(schema),
+    mode: 'onSubmit'
   })
 
-  const onSubmit = async (data) => {
-    console.log('Авторизация: ', data)
-  }
+  const {
+    handleSubmit,
+    formState: { isSubmitting }
+  } = form
+
+  const handleFormSubmit = handleSubmit(async (data) => {
+    console.log('data', data)
+  })
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Авторизация</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.inputGroup}>
-          <input
-            type='email'
-            placeholder='Email'
-            {...register('email')}
-            className={styles.input}
-          />
-          {errors.email && (
-            <p className={styles.error}>{errors.email.message}</p>
-          )}
-        </div>
-        <div className={styles.inputGroup}>
-          <input
-            type='password'
-            placeholder='Пароль'
-            {...register('password')}
-            className={styles.input}
-          />
-          {errors.password && (
-            <p className={styles.error}>{errors.password.message}</p>
-          )}
-        </div>
-        <button type='submit' className={styles.button} disabled={isSubmitting}>
-          {isSubmitting ? 'Вход...' : 'Войти'}
-        </button>
-      </form>
-    </div>
+    <Card>
+      <Card.Title>Авторизация</Card.Title>
+      <Form form={form} onSubmit={handleFormSubmit}>
+        <Form.Item name='email' label='Электронная почта'>
+          <Input type='email' placeholder='Введите электронную почту' />
+        </Form.Item>
+        <Form.Item name='password' label='Пароль'>
+          <Input type='password' placeholder='Введите пароль' />
+        </Form.Item>
+        <Button type='submit' disabled={isSubmitting}>
+          Войти
+        </Button>
+      </Form>
+      <Card.Text>
+        Нет учётной записи? <AppLink to='/sign-up'>Зарегистрироваться</AppLink>
+      </Card.Text>
+    </Card>
   )
 }
 
