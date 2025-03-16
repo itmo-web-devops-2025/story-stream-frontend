@@ -1,4 +1,3 @@
-import Authorization from '@/features/authorization/authorization'
 import HeaderDefault from '@/features/header-default/header-default'
 import Page from '@/shared/layouts/page/page'
 import type { FC } from 'react'
@@ -6,7 +5,7 @@ import type { FC } from 'react'
 const SignIn: FC = () => (
   <Page>
     <HeaderDefault />
-    <Authorization />
+    {/*<Authorization />*/}
   </Page>
 )
 
