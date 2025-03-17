@@ -6,7 +6,7 @@ import styles from './input.module.css'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement>
 
-const Input: FC<InputProps> = ({ name, ...props }) => {
+const Input: FC<InputProps> = ({ ...props }) => {
   const {
     register,
     formState: { errors }
