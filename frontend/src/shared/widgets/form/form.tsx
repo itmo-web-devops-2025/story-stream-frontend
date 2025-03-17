@@ -1,5 +1,4 @@
 import { FormItemContext } from '@/contexts/form-item.context'
-import styles from '@/features/authorization/authorization.module.css'
 import { DivProps } from '@/types/core/div-props.type'
 import { FormProps } from '@/types/core/form-props.type'
 import { PropsWithChildren } from 'react'
@@ -9,6 +8,8 @@ import {
   useFormContext,
   UseFormReturn
 } from 'react-hook-form'
+
+import styles from './form.module.css'
 
 type ItemProps = {
   name: string

@@ -1,5 +1,6 @@
 import Home from '@/pages/home/home'
 import SignIn from '@/pages/sign-in/sign-in'
+import SignUp from '@/pages/sign-up/sign-up'
 import { createBrowserRouter, RouteObject } from 'react-router'
 
 const router: RouteObject[] = [
@@ -10,6 +11,10 @@ const router: RouteObject[] = [
   {
     path: '/sign-in',
     element: <SignIn />
+  },
+  {
+    path: '/sign-up',
+    element: <SignUp />
   }
 ]
 
