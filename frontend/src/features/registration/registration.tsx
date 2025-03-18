@@ -15,21 +15,20 @@ const schema = z.object({
 })
 
 const Registration: FC = () => {
-  const createUser = useCreateUserMutation()
+  const { mutateAsync: createUser, isPending } = useCreateUserMutation()
   const form = useForm({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
   })
 
-  const {
-    handleSubmit,
-    formState: { isSubmitting }
-  } = form
+  const { handleSubmit } = form
 
   const handleFormSubmit = handleSubmit(async (data) => {
-    console.log('data', data)
     try {
-      const createdUser = createUser.mutate(data)
+      const user = await createUser({ body: data })
+      console.log(user)
+    } catch (e) {
+      console.error(e)
     }
   })
 
@@ -37,18 +36,18 @@ const Registration: FC = () => {
     <Card>
       <Card.Title>Регистрация</Card.Title>
       <Form form={form} onSubmit={handleFormSubmit}>
-        <Form.Item name="username" label="Никнейм">
-          <Input type="text" placeholder="Введите никнейм" />
+        <Form.Item name='username' label='Никнейм'>
+          <Input type='text' placeholder='Введите никнейм' />
         </Form.Item>
-        <Form.Item name="password" label="Пароль">
-          <Input type="password" placeholder="Введите пароль" />
+        <Form.Item name='password' label='Пароль'>
+          <Input type='password' placeholder='Введите пароль' />
         </Form.Item>
-        <Button type="submit" disabled={isSubmitting}>
-          Войти
+        <Button type='submit' disabled={isPending}>
+          Зарегистрироваться
         </Button>
       </Form>
       <Card.Text>
-        Нет учётной записи? <AppLink to="/sign-up">Зарегистрироваться</AppLink>
+        Есть учётная запись? <AppLink to='/sign-in'>Войти</AppLink>
       </Card.Text>
     </Card>
   )

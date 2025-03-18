@@ -1,4 +1,4 @@
-import { User } from '@/types/user.interface'
+import { User } from '@/types/user/user.interface'
 
 export interface Article {
   slug: string

@@ -3,14 +3,10 @@ import { Link, LinkProps } from 'react-router'
 
 import styles from './app-link.module.css'
 
-const AppLink = ({ children, ...props }: PropsWithChildren<LinkProps>) => {
-  console.log(`Link component is working`)
-
-  return (
+const AppLink = ({ children, ...props }: PropsWithChildren<LinkProps>) => (
     <Link className={styles['link']} {...props}>
       {children}
     </Link>
   )
-}
 
 export default AppLink
