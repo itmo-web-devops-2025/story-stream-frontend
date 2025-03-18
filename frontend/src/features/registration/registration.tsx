@@ -7,6 +7,7 @@ import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -27,6 +28,7 @@ const Registration: FC = () => {
     try {
       const user = await createUser({ body: data })
       console.log(user)
+      toast('Here is your toast.')
     } catch (e) {
       console.error(e)
     }
