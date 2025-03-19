@@ -1,23 +1,22 @@
-import { UserError } from '@/constants/errorMessage';
-import { checkPassword } from '@/constants/password';
-import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
-import { User } from '@/modules/user/entities/user.entity';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as process from 'process';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { Repository } from 'typeorm';
+import { checkPassword } from '@/constants/password';
+import { UserError } from '@/constants/errorMessage';
+import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
+import * as process from 'process';
 import 'dotenv/config';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  async registerTokens(userInfo: User) {
-    console.log('userInfo', userInfo);
+  async registerTokens(userInfo: UserEntity) {
     const user = await this.userRepository.findOne({
       where: { id: userInfo.id },
     });

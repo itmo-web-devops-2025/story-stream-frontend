@@ -5,7 +5,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from '@/modules/user/user.module';
 import { PassportModule } from '@nestjs/passport';
-import { User } from '@/modules/user/entities/user.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { LocalStrategy } from '@/modules/auth/strategies/local.strategy';
 import { JwtStrategy } from '@/modules/auth/strategies/jwt.strategy';
 import 'dotenv/config';
@@ -13,7 +13,7 @@ import * as process from 'process';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([UserEntity]),
     UserModule,
     PassportModule,
     JwtModule.registerAsync({

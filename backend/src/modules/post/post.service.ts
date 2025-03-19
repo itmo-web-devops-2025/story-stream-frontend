@@ -3,20 +3,20 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePostDto } from '@/modules/post/dto/createPost.dto';
 import { UpdatePostDto } from '@/modules/post/dto/updatePost.dto';
-import { Post } from '@/modules/post/entities/post.entity';
-import { User } from '@/modules/user/entities/user.entity';
+import { PostEntity } from '@/modules/post/entities/post.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { postLimit } from '@/modules/post/post.const';
-import { PostLike } from '@/modules/postLike/entities/postLike.entity';
+import { PostLikeEntity } from '@/modules/postLike/entities/postLike.entity';
 
 @Injectable()
 export class PostService {
   constructor(
-    @InjectRepository(Post)
-    private readonly postRepository: Repository<Post>,
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-    @InjectRepository(PostLike)
-    private readonly postLikeRepository: Repository<PostLike>,
+    @InjectRepository(PostEntity)
+    private readonly postRepository: Repository<PostEntity>,
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(PostLikeEntity)
+    private readonly postLikeRepository: Repository<PostLikeEntity>,
   ) {}
 
   async create(createPostDto: CreatePostDto, userId: number) {

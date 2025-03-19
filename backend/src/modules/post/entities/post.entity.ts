@@ -8,24 +8,30 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { User } from '@/modules/user/entities/user.entity';
-import { Comment } from '@/modules/comment/entities/comment.entity';
-import { PostLike } from '@/modules/postLike/entities/postLike.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
+import { CommentEntity } from '@/modules/comment/entities/comment.entity';
+import { PostLikeEntity } from '@/modules/postLike/entities/postLike.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('posts')
-export class Post {
+export class PostEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   title: string;
 
+  @ApiProperty()
   @Column()
   body: string;
 
-  @OneToMany(() => PostLike, (like) => like.post)
-  likes: PostLike[];
+  @ApiProperty()
+  @OneToMany(() => PostLikeEntity, (like) => like.post)
+  likes: PostLikeEntity[];
 
+  @ApiProperty()
   @CreateDateColumn({
     name: 'created_at',
     type: 'timestamp',
@@ -34,6 +40,7 @@ export class Post {
   })
   createdAt: Date;
 
+  @ApiProperty()
   @UpdateDateColumn({
     name: 'updated_at',
     type: 'timestamp',
@@ -42,12 +49,15 @@ export class Post {
   })
   updatedAt: Date;
 
+  @ApiProperty()
   @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp', default: null, nullable: true })
   deletedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.posts)
-  user: User;
+  @ApiProperty({ type: () => UserEntity })
+  @ManyToOne(() => UserEntity, (user) => user.posts)
+  user: UserEntity;
 
-  @OneToMany(() => Comment, (comment) => comment.post)
-  comments: Comment[];
+  @ApiProperty()
+  @OneToMany(() => CommentEntity, (comment) => comment.post)
+  comments: CommentEntity[];
 }

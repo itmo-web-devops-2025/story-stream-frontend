@@ -1,7 +1,7 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '@/modules/user/entities/user.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { hash } from 'bcrypt';
 import { CreateUserDto } from '@/modules/user/dto/createUser.dto';
 import { UpdateUserDto } from '@/modules/user/dto/updateUser.dto';
@@ -10,8 +10,8 @@ import { omit } from 'lodash';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
