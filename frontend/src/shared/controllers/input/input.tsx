@@ -18,7 +18,6 @@ const Input: FC<InputProps> = ({ name, ...props }) => {
     return null
   }
 
-  console.log(errors)
   const inputClass = cn(styles['input'], {
     [styles.inputError]: errors[context.name],
     [styles.shake]: errors[context.name]

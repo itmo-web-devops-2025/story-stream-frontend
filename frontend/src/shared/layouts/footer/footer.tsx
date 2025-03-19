@@ -2,10 +2,7 @@ import type { FC } from 'react'
 
 import styles from './footer.module.css'
 
-const Footer: FC = () => {
-  console.log(`Footer component is working`)
-
-  return (
+const Footer: FC = () => (
     <footer className={styles.footer}>
       <div className={styles.authors}>
         <ul className={styles['list']}>
@@ -26,6 +23,5 @@ const Footer: FC = () => {
       </p>
     </footer>
   )
-}
 
 export default Footer

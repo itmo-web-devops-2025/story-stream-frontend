@@ -46,16 +46,12 @@ type Props = {
   children?: ReactNode
 }
 
-const Articles = ({ children }: Props) => {
-  console.log(`Articles component is working`)
-
-  return (
+const Articles = ({ children }: Props) => (
     <section className={styles.container}>
       <ol className={styles.articles}>{children}</ol>
       <Aside />
     </section>
   )
-}
 
 Articles.Item = Item
 export default Articles

@@ -24,9 +24,7 @@ const Authorization: FC = () => {
     formState: { isSubmitting }
   } = form
 
-  const handleFormSubmit = handleSubmit(async (data) => {
-    console.log('data', data)
-  })
+  const handleFormSubmit = handleSubmit(async (data) => {})
 
   return (
     <Card>

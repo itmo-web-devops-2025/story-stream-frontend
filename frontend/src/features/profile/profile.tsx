@@ -13,8 +13,6 @@ const Profile: FC = () => {
   const { data: user } = useGetQuery<User>(getUser)
   const { data: articles } = useGetQuery<Article[]>(getArticles)
 
-  console.log(articles)
-
   return (
     <section>
       <div className={styles['profile']}>
