@@ -1,7 +1,7 @@
 import { useAuthLoginMutation } from '@/services/api/auth.api'
-import Button from '@/shared/controllers/button/button'
-import Input from '@/shared/controllers/input/input'
-import AppLink from '@/shared/controllers/link/app-link'
+import Button from '@/shared/ui/button/button'
+import Input from '@/shared/ui/input/input'
+import AppLink from '@/shared/ui/link/app-link'
 import Card from '@/shared/widgets/card/card'
 import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -42,7 +42,6 @@ const Authorization: FC = () => {
 
   return (
     <Card>
-      <Card.Title>Авторизация</Card.Title>
       <Form form={form} onSubmit={handleFormSubmit}>
         <Form.Item name='username' label='Имя пользователя'>
           <Input type='username' placeholder='Введите имя пользователя' />

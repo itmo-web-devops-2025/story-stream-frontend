@@ -29,15 +29,6 @@
   color: var(--primary-color);
 }
 
-.content p {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: var(--font-size-content);
-  line-height: 1.2;
-}
-
 .articles {
   flex: 1 0 70%;
   padding: 12px 0 0;

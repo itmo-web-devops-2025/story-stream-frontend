@@ -1,32 +1,11 @@
-import useGetQuery from '@/hooks/use-get-query.hook'
-import { getArticles } from '@/services/article.api'
-import { Article } from '@/types/article.interface'
 import type { FC } from 'react'
 
 import styles from './profile.module.css'
 
-const Profile: FC = () => {
-  const { data: articles } = useGetQuery<Article[]>(getArticles)
-
-  console.log(articles)
-
-  return (
+const Profile: FC = () => (
     <section>
-      <div className={styles['profile']}>
-        {/*{user && (*/}
-        {/*  <>*/}
-        {/*    <div className={styles['username-container']}>*/}
-        {/*      <h2 className={styles['username']}>*/}
-        {/*        {capitalizeWords(user?.username)}*/}
-        {/*      </h2>*/}
-        {/*      <ButtonIcon className={styles['button']} icon='pencil-1' />*/}
-        {/*    </div>*/}
-        {/*    <span className={styles['bio']}>{user?.bio}</span>*/}
-        {/*  </>*/}
-        {/*)}*/}
-      </div>
+      <div className={styles['profile']}></div>
     </section>
   )
-}
 
 export default Profile

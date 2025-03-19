@@ -8,6 +8,7 @@ import type { FC } from 'react'
 const SignUp: FC = () => (
   <Page>
     <HeaderDefault />
+    <Page.Header title='Регистрация' />
     <Content>
       <Registration />
     </Content>

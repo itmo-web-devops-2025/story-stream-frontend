@@ -1,4 +1,4 @@
-import ButtonIcon from '@/shared/controllers/button-icon/button-icon'
+import ButtonIcon from '@/shared/ui/button-icon/button-icon'
 import { FC, PropsWithChildren, useEffect } from 'react'
 
 import styles from './modal.module.css'

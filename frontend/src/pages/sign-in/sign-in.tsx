@@ -8,6 +8,7 @@ import type { FC } from 'react'
 const SignIn: FC = () => (
   <Page>
     <HeaderDefault />
+    <Page.Header title='Авторизация' />
     <Content>
       <Authorization />
     </Content>

@@ -1,5 +1,6 @@
 import Aside from '@/features/articles/components/aside/aside'
 import Icon from '@/shared/core/icon/icon'
+import Text from '@/shared/ui/text/text'
 import type { FC, PropsWithChildren, ReactNode } from 'react'
 import { Link, To } from 'react-router'
 
@@ -29,13 +30,13 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ href }) => (
           </div>
         </div>
       </header>
-      <section className={styles.content}>
-        <p>
+      <section>
+        <Text intrigued={true}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
           deleniti ea est nesciunt nisi, odit repellendus vel? Animi ipsum
           nesciunt nobis repellat. Animi debitis eligendi, illo numquam porro
           quasi suscipit?
-        </p>
+        </Text>
       </section>
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
