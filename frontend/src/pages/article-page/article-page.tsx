@@ -1,18 +1,19 @@
 import HeaderDefault from '@/features/header-default/header-default'
-import Registration from '@/features/registration/registration'
 import Content from '@/shared/layouts/content/content'
 import Footer from '@/shared/layouts/footer/footer'
 import Page from '@/shared/layouts/page/page'
 import type { FC } from 'react'
 
-const SignUp: FC = () => (
-  <Page>
-    <HeaderDefault />
-    <Content>
-      <Registration />
-    </Content>
-    <Footer />
-  </Page>
-)
+const ArticlePage: FC = () => {
+  console.log(`Post component is working`)
 
-export default SignUp
+  return (
+    <Page>
+      <HeaderDefault />
+      <Content></Content>
+      <Footer />
+    </Page>
+  )
+}
+
+export default ArticlePage

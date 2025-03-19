@@ -1,16 +1,20 @@
 import Aside from '@/features/articles/components/aside/aside'
 import Icon from '@/shared/core/icon/icon'
 import type { FC, PropsWithChildren, ReactNode } from 'react'
-import { Link } from 'react-router'
+import { Link, To } from 'react-router'
 
 import styles from './articles.module.css'
 
-const Item: FC<PropsWithChildren> = () => (
+type ItemProps = {
+  href: To
+}
+
+const Item: FC<PropsWithChildren<ItemProps>> = ({ href }) => (
   <li>
     <article className={styles.article}>
       <header className={styles.header}>
         <h2 className={styles.title}>
-          <Link className={styles.link} to='#'>
+          <Link className={styles.link} to={href}>
             Заголовок статьи
           </Link>
         </h2>
