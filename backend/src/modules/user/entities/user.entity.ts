@@ -1,28 +1,36 @@
-import { Post } from '@/modules/post/entities/post.entity';
+import { PostEntity } from '@/modules/post/entities/post.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Comment } from '@/modules/comment/entities/comment.entity';
-import { PostLike } from '@/modules/postLike/entities/postLike.entity';
+import { CommentEntity } from '@/modules/comment/entities/comment.entity';
+import { PostLikeEntity } from '@/modules/postLike/entities/postLike.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('users')
-export class User {
+export class UserEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   username: string;
 
+  @ApiProperty()
   @Column({ nullable: true, default: null })
   bio: string;
 
+  @ApiProperty()
   @Column({ select: false })
   password: string;
 
-  @OneToMany(() => Post, (post) => post.user)
-  posts: Post[];
+  @ApiProperty()
+  @OneToMany(() => PostEntity, (post) => post.user)
+  posts: PostEntity[];
 
-  @OneToMany(() => Comment, (comment) => comment.user)
-  comments: Comment[];
+  @ApiProperty()
+  @OneToMany(() => CommentEntity, (comment) => comment.user)
+  comments: CommentEntity[];
 
-  @OneToMany(() => PostLike, (like) => like.user)
-  likes: PostLike[];
+  @ApiProperty()
+  @OneToMany(() => PostLikeEntity, (like) => like.user)
+  likes: PostLikeEntity[];
 }

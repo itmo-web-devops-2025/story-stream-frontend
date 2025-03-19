@@ -1,15 +1,19 @@
-import { Post } from '@/modules/post/entities/post.entity';
-import { User } from '@/modules/user/entities/user.entity';
+import { PostEntity } from '@/modules/post/entities/post.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('post_likes')
-export class PostLike {
+export class PostLikeEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.likes)
-  user: User;
+  @ApiProperty()
+  @ManyToOne(() => UserEntity, (user) => user.likes)
+  user: UserEntity;
 
-  @ManyToOne(() => Post, (post) => post.likes)
-  post: Post;
+  @ApiProperty()
+  @ManyToOne(() => PostEntity, (post) => post.likes)
+  post: PostEntity;
 }
