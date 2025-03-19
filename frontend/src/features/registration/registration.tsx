@@ -17,6 +17,7 @@ const schema = z.object({
 
 const Registration: FC = () => {
   const { mutateAsync: createUser, isPending } = useCreateUserMutation()
+
   const form = useForm({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
@@ -27,8 +28,9 @@ const Registration: FC = () => {
   const handleFormSubmit = handleSubmit(async (data) => {
     try {
       const user = await createUser({ body: data })
-      console.log(user)
-      toast('Here is your toast.')
+
+      console.log('user', user)
+      toast(`${user.data.username}, добро пожаловать`)
     } catch (e) {
       console.error(e)
     }
