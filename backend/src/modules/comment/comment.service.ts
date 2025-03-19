@@ -1,19 +1,19 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@/modules/user/entities/user.entity';
-import { Comment } from '@/modules/comment/entities/comment.entity';
-import { Post } from '@/modules/post/entities/post.entity';
+import { UserEntity } from '@/modules/user/entities/user.entity';
+import { CommentEntity } from '@/modules/comment/entities/comment.entity';
+import { PostEntity } from '@/modules/post/entities/post.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class CommentService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-    @InjectRepository(Comment)
-    private readonly commentRepository: Repository<Comment>,
-    @InjectRepository(Post)
-    private readonly postRepository: Repository<Post>,
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(CommentEntity)
+    private readonly commentRepository: Repository<CommentEntity>,
+    @InjectRepository(PostEntity)
+    private readonly postRepository: Repository<PostEntity>,
   ) {}
 
   async create(text: string, userId: number, postId: number) {
