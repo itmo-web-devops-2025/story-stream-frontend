@@ -30,10 +30,8 @@ const Authorization: FC = () => {
     try {
       const response = await authLogin({
         body: {
-          user: {
-            username: data.username,
-            password: data.password
-          }
+          login: data.username,
+          password: data.password
         }
       })
       console.log('response', response)
@@ -46,8 +44,8 @@ const Authorization: FC = () => {
     <Card>
       <Card.Title>Авторизация</Card.Title>
       <Form form={form} onSubmit={handleFormSubmit}>
-        <Form.Item name='username' label='Электронная почта'>
-          <Input type='username' placeholder='Введите электронную почту' />
+        <Form.Item name='username' label='Имя пользователя'>
+          <Input type='username' placeholder='Введите имя пользователя' />
         </Form.Item>
         <Form.Item name='password' label='Пароль'>
           <Input type='password' placeholder='Введите пароль' />

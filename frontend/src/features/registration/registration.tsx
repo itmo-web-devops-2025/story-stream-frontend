@@ -27,7 +27,9 @@ const Registration: FC = () => {
 
   const handleFormSubmit = handleSubmit(async (data) => {
     try {
-      const user = await createUser({ body: data })
+      const user = await createUser({
+        body: data
+      })
 
       console.log('user', user)
       toast(`${user.data.username}, добро пожаловать`)
@@ -40,8 +42,8 @@ const Registration: FC = () => {
     <Card>
       <Card.Title>Регистрация</Card.Title>
       <Form form={form} onSubmit={handleFormSubmit}>
-        <Form.Item name='username' label='Никнейм'>
-          <Input type='text' placeholder='Введите никнейм' />
+        <Form.Item name='username' label='Имя пользователя'>
+          <Input type='text' placeholder='Введите имя пользователя' />
         </Form.Item>
         <Form.Item name='password' label='Пароль'>
           <Input type='password' placeholder='Введите пароль' />

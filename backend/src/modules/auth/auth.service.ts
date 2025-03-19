@@ -17,11 +17,10 @@ export class AuthService {
   ) {}
 
   async registerTokens(userInfo: User) {
+    console.log('userInfo', userInfo);
     const user = await this.userRepository.findOne({
       where: { id: userInfo.id },
     });
-
-    console.log(user);
 
     if (!user) return;
 

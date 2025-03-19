@@ -54,10 +54,10 @@ const Articles = ({ children }: Props) => {
   console.log(`Articles component is working`)
 
   return (
-    <section className={styles.container}>
+    <div className={styles.container}>
       <ol className={styles.articles}>{children}</ol>
       <Aside />
-    </section>
+    </div>
   )
 }
 
