@@ -1,8 +1,4 @@
-import type { FC } from 'react'
-
-type TProps = {}
-
-const Article: FC<TProps> = () => {
+const Article = () => {
   console.log(`Article component is working`)
 
   return (
