@@ -2,8 +2,9 @@ import 'dotenv/config';
 import * as process from 'process';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as path from 'node:path';
+import { DataSourceOptions } from 'typeorm';
 
-const typeOrmConfig: TypeOrmModuleOptions = {
+const dbConfig = {
   type: 'postgres',
   host: process.env.DB_HOST || 'localhost',
   port: +(process.env.DB_PORT || 5432),
@@ -14,4 +15,5 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   synchronize: process.env.NODE_ENV === 'development',
 };
 
-export default typeOrmConfig;
+export const typeOrmConfig: TypeOrmModuleOptions = dbConfig as TypeOrmModuleOptions;
+export const dataSourceConfig: DataSourceOptions = dbConfig as DataSourceOptions;
