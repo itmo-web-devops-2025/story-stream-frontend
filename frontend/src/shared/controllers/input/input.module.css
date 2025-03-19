@@ -1,0 +1,45 @@
+.input {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-inner);
+  height: 40px;
+  font-size: var(--font-size-middle);
+  padding: 6px 12px;
+}
+
+.input:focus-visible {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+/* Класс ошибки */
+.input-error {
+  border-color: var(--primary-color);
+
+}
+
+.input-error:focus {
+  border-color: var(--primary-color);
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out; /* Применяем анимацию shake */
+}
+
+/* Анимация shake */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

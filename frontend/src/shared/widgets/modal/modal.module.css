@@ -1,0 +1,59 @@
+.modal-overlay[data-open="true"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  background: white;
+  border-radius: var(--border-radius-outer);
+  max-width: 500px;
+  padding: 0;
+  border: none;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  padding: 5px 0;
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  border-radius: var(--border-radius-outer) var(--border-radius-outer) 0 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 400;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content {
+  min-height: 400px;
+}
+
+.button {
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  transform-origin: center;
+  color: #fff;
+}
+
+.button:hover {
+  color: var(--primary-color);
+}
+
+.button i {
+  font-size: 32px;
+}

@@ -1,0 +1,12 @@
+.logo {
+  font-size: 48px;
+  line-height: 1;
+  color: var(--text-color);
+  font-weight: 400;
+  text-decoration: none;
+  user-select: none;
+}
+
+.accent {
+  color: var(--primary-color);
+}

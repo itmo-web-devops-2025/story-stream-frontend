@@ -1,0 +1,10 @@
+.header {
+  max-width: var(--screen-lg);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-lg) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}

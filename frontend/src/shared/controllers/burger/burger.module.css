@@ -1,0 +1,14 @@
+.burger-button {
+  height: 32px;
+  width: 32px;
+  color: var(--secondary-color);
+  transition: color var(--transition-duration);
+}
+
+.burger-button:hover {
+  color: var(--primary-color);
+}
+
+.burger-button > i {
+  font-size: 32px;
+}

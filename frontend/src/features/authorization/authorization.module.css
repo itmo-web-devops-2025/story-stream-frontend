@@ -1,0 +1,40 @@
+.title {
+  font-size: var(--font-size-title);
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 var(--space-lg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: var(--space-md)
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  min-height: 112px;
+}
+
+.label {
+  font-size: var(--font-size-content);
+  margin: 0 0 var(--space-sm)
+}
+
+.error {
+  color: var(--primary-color);
+  font-size: var(--font-size-little);
+  line-height: 1;
+  margin: 6px 0 0;
+}
+
+.text {
+  font-size: var(--font-size-little);
+  color: var(--text-color);
+  line-height: 1.2;
+  text-align: center;
+  margin: var(--space-md) 0 0;
+}

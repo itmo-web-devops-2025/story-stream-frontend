@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #b20d0d; /* Основной цвет */
+  --hover-color: #b20d0d;
+  --secondary-color: #131313;
+  --background-color: #f4f4f4; /* Цвет фона */
+  --text-color: #333333; /* Цвет текста */
+  --text-color-description: #B6AA8D;
+  --border-color: #333333; /* Цвет границ */
+
+  --line-height-small: 1.4;
+  --line-height-base: 1.6;
+  --line-height-large: 1.8;
+
+  --border-radius-inner: 6px;
+  --border-radius-outer: 11px;
+
+  /* Шрифты */
+  --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+
+  /* Отступы и маргины */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 40px;
+
+  /* Прочее */
+  --transition-duration: 0.3s;
+
+  --screen-lg: 1400px; /* Десктопы */
+  --screen-md: 992px; /* Ноутбуки, планшеты в альбомной ориентации */
+  --screen-sm: 768px; /* Планшеты и маленькие экраны */
+  --screen-xs: 480px; /* Мобильные телефоны */
+  --screen-xxs: 360px; /* Очень маленькие телефоны */
+
+  --font-size-title: 48px;
+  --font-size-content: 24px;
+  --font-size-little: 16px;
+  --font-size-middle: 20px;
+
+  --gap-global: 40px;
+}
