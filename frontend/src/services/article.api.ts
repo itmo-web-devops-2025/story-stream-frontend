@@ -1,5 +1,5 @@
 import articlesMock from '@/mock/article/article.mock'
-import { Article } from '@/types/article.interface'
+import { Article } from '@/types/article/article.interface'
 
 export const getArticles = async (): Promise<Article[]> =>
   new Promise((resolve) => {

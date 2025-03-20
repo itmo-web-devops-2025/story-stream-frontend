@@ -31,12 +31,12 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ href }) => (
         </div>
       </header>
       <section>
-        <Text intrigued={true}>
+        <Text.Paragraph intrigued={true}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
           deleniti ea est nesciunt nisi, odit repellendus vel? Animi ipsum
           nesciunt nobis repellat. Animi debitis eligendi, illo numquam porro
           quasi suscipit?
-        </Text>
+        </Text.Paragraph>
       </section>
       <footer className={styles.footer}>
         <div className={styles.footerContent}>

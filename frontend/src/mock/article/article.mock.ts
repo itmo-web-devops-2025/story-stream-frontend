@@ -1,5 +1,5 @@
 import { mockUsers } from '@/mock/user/users.mock'
-import { Article } from '@/types/article.interface'
+import { Article } from '@/types/article/article.interface'
 
 const generateArticles = (): Article[] => {
   const articles: Article[] = []
