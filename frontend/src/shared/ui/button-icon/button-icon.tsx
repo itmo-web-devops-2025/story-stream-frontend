@@ -10,14 +10,10 @@ type TProps = {
   HTMLButtonElement
 >
 
-const ButtonIcon: FC<TProps> = ({ icon, className, ...props }) => {
-  console.log(`ButtonIcon component is working`)
-
-  return (
+const ButtonIcon: FC<TProps> = ({ icon, className, ...props }) => (
     <button {...props} className={cn(className, styles['button'])}>
       <Icon icon={icon} />
     </button>
   )
-}
 
 export default ButtonIcon

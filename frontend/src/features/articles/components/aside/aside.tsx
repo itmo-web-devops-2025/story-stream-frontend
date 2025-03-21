@@ -2,10 +2,7 @@ import type { FC } from 'react'
 
 import styles from './aside.module.css'
 
-const Aside: FC = () => {
-  console.log(`Aside component is working`)
-
-  return (
+const Aside: FC = () => (
     <aside aria-label='Оглавление' className={styles.aside}>
       <ol className={styles.asideList}>
         <li className={styles.asideItem}>
@@ -20,6 +17,5 @@ const Aside: FC = () => {
       </ol>
     </aside>
   )
-}
 
 export default Aside

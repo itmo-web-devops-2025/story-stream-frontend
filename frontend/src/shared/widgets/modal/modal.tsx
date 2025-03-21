@@ -13,8 +13,6 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
   onClose,
   children
 }) => {
-  console.log(`Modal component is working`)
-
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
