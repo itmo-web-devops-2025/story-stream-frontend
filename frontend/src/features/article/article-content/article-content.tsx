@@ -1,7 +1,7 @@
 import styles from '@/features/article/article-content/article-content.module.css'
 import Button from '@/shared/ui/button/button'
 import Form from '@/shared/widgets/form/form'
-import type { Article } from '@/types/article/article.interface'
+import type { Post } from '@/types/post/post.interface'
 import { capitalizeWords } from '@/utils/capitalize-word.util'
 import { dateFormat } from '@/utils/date-format.util'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,7 +10,7 @@ import { z } from 'zod'
 import 'ckeditor5/ckeditor5.css'
 
 type ArticleProps = {
-  article: Article
+  article: Post
 }
 
 const schema = z.object({

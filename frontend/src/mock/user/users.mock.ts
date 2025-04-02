@@ -1,32 +1,34 @@
-import { User } from '@/types/user.interface'
+import { User } from '@/types/user/user.interface'
 
 export const mockUsers: User[] = [
   {
-    email: 'alice@example.com',
+    id: '0',
     username: 'alice greene',
     bio: 'Frontend developer with a passion for design',
-    token: 'token123'
+    password: '1234'
   },
   {
-    email: 'bob@example.com',
+    id: '1',
     username: 'bob franco',
     bio: 'Backend engineer, Golang enthusiast',
-    token: 'token456'
+    password: '1234'
   },
   {
-    email: 'charlie@example.com',
+    id: '2',
     username: 'charlie donovan',
-    bio: 'DevOps specialist, cloud solutions architect'
+    bio: 'DevOps specialist, cloud solutions architect',
+    password: '1234'
   },
   {
-    email: 'dave@example.com',
+    id: '3',
     username: 'dave graham',
     bio: 'Fullstack developer, loves TypeScript',
-    token: 'token789'
+    password: '1234'
   },
   {
-    email: 'eve@example.com',
+    id: '4',
     username: 'eve bailey',
-    bio: 'Cybersecurity expert, ethical hacker'
+    bio: 'Cybersecurity expert, ethical hacker',
+    password: '1234'
   }
 ] as const

@@ -9,7 +9,6 @@
 .item {
   display: flex;
   flex-direction: column;
-  min-height: 112px;
 }
 
 .label {

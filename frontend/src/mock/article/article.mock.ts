@@ -1,8 +1,8 @@
 import { mockUsers } from '@/mock/user/users.mock'
-import { Article } from '@/types/article/article.interface'
+import { Post } from '@/types/post/post.interface'
 
-const generateArticles = (): Article[] => {
-  const articles: Article[] = []
+const generateArticles = (): Post[] => {
+  const articles: Post[] = []
   const titles = [
     'How to Learn TypeScript',
     'JavaScript ES6 Features',
@@ -23,7 +23,7 @@ const generateArticles = (): Article[] => {
 
   for (let i = 0; i < 15; i++) {
     const randomUser = mockUsers[Math.floor(Math.random() * mockUsers.length)]
-    const article: Article = {
+    const article: Post = {
       slug: titles[i].toLowerCase().replace(/ /g, '-'),
       title: titles[i],
       description: `Прототип нового сервиса — это как грохот грома грядущих изменений ${titles[i].toLowerCase()}.`,

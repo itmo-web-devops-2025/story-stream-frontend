@@ -5,11 +5,13 @@ import styles from './modal.module.css'
 
 type TProps = {
   open?: boolean
+  title: string
   onClose?: () => void
 }
 
 const Modal: FC<PropsWithChildren<TProps>> = ({
   open = false,
+  title,
   onClose,
   children
 }) => {
@@ -29,11 +31,10 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
       <dialog
         className={styles.container}
         open={open}
-        onClick={onClose}
         aria-labelledby='dialog-name'
       >
         <h2 id='dialog-name' className={styles.title}>
-          Заголовок
+          {title}
         </h2>
         <div className={styles.content}>{children}</div>
         <ButtonIcon
