@@ -1,4 +1,4 @@
-import Article from '@/features/article/article'
+import ArticleContent from '@/features/article/article-content/article-content'
 import HeaderDefault from '@/features/header-default/header-default'
 import articlesMock from '@/mock/article/article.mock'
 import Content from '@/shared/layouts/content/content'
@@ -14,7 +14,7 @@ const ArticlePage: FC = () => {
       <HeaderDefault />
       <Page.Header title={article.title} />
       <Content>
-        <Article article={article} />
+        <ArticleContent article={article} />
       </Content>
       <Footer />
     </Page>

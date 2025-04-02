@@ -1,5 +1,4 @@
-import { PathRoute } from '@/constants/core/path-route.constant'
-import Articles from '@/features/articles/articles'
+import ArticleList from '@/features/article/article-list/article-list'
 import HeaderDefault from '@/features/header-default/header-default'
 import Content from '@/shared/layouts/content/content'
 import Footer from '@/shared/layouts/footer/footer'
@@ -11,12 +10,7 @@ const Home = () => (
     <HeaderDefault />
     <Page.Header title='Denis Invamov' description='Android Developer' />
     <Content>
-      <Articles>
-        <Articles.Item href={PathRoute.Articles} />
-        <Articles.Item href={PathRoute.Articles} />
-        <Articles.Item href={PathRoute.Articles} />
-        <Articles.Item href={PathRoute.Articles} />
-      </Articles>
+      <ArticleList />
     </Content>
     <Footer />
     <Modal />

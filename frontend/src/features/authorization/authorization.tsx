@@ -38,7 +38,6 @@ const Authorization: FC = () => {
       console.log('response', response)
     } catch (e) {
       console.error(e)
-    } finally {
     }
   })
 

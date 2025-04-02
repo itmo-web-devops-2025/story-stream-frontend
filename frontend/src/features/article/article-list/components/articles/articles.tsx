@@ -1,9 +1,8 @@
-import Aside from '@/features/articles/components/aside/aside'
+import Aside from '@/features/article/article-list/components/articles/components/aside/aside'
 import Icon from '@/shared/core/icon/icon'
 import Text from '@/shared/ui/text/text'
 import type { FC, PropsWithChildren, ReactNode } from 'react'
 import { Link, To } from 'react-router'
-
 import styles from './articles.module.css'
 
 type ItemProps = {
@@ -51,16 +50,12 @@ type Props = {
   children?: ReactNode
 }
 
-const Articles = ({ children }: Props) => {
-  console.log(`Articles component is working`)
-
-  return (
-    <div className={styles.container}>
-      <ol className={styles.articles}>{children}</ol>
-      <Aside />
-    </div>
-  )
-}
+const Articles = ({ children }: Props) => (
+  <div className={styles.container}>
+    <ol className={styles.articles}>{children}</ol>
+    <Aside />
+  </div>
+)
 
 Articles.Item = Item
 export default Articles

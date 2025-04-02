@@ -15,11 +15,12 @@
 }
 
 .meta-block {
-  display: inline-flex;
+  display: flex;
   gap: 6px;
   font-size: var(--font-size-middle);
   color: var(--text-color-description);
   line-height: 1.3;
+  justify-content: space-between;
 }
 
 .author {
