@@ -15,7 +15,7 @@ const Title = ({ children, ...props }: PropsWithChildren<HeadingProps>) => (
 )
 
 const Card = ({ children }: PropsWithChildren<DivProps>) => (
-  <div className={styles.container}>{children}</div>
+  <div className={styles.card}>{children}</div>
 )
 
 Card.Title = Title

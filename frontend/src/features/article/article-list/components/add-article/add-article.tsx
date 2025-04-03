@@ -1,21 +1,20 @@
 import { useCreatePostMutation } from '@/services/api/post.api'
 import Button from '@/shared/ui/button/button'
 import Input from '@/shared/ui/input/input'
-import CkEditor from '@/shared/widgets/ck-editor/ck-editor'
 import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-type TProps = {}
+import styles from './add-article.module.css'
 
 const schema = z.object({
   title: z.string().min(3, 'Минимальная длина заголовка 3 символа'),
   body: z.string().min(50, 'Минимальная длина текста 50 символа')
 })
 
-const AddArticle: FC<TProps> = () => {
+const AddArticle: FC = () => {
   console.log(`AddArticle component is working`)
 
   const form = useForm({
@@ -26,6 +25,7 @@ const AddArticle: FC<TProps> = () => {
   const { mutateAsync: createPost } = useCreatePostMutation()
   const {
     handleSubmit,
+    register,
     formState: { isSubmitting }
   } = form
 
@@ -48,7 +48,11 @@ const AddArticle: FC<TProps> = () => {
         <Input type='title' placeholder='Введите заголовок' />
       </Form.Item>
       <Form.Item name='body' label='Текст статьи'>
-        <CkEditor />
+        <textarea
+          className={styles.textarea}
+          placeholder='Введите текст статьи'
+          {...register('body')}
+        />
       </Form.Item>
 
       <Button type='submit' disabled={isSubmitting}>

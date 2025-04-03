@@ -1,4 +1,5 @@
 import ButtonIcon from '@/shared/ui/button-icon/button-icon'
+import cn from 'classnames'
 import { FC, PropsWithChildren, useEffect } from 'react'
 
 import styles from './modal.module.css'
@@ -16,29 +17,35 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
   children
 }) => {
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+    if (open && onClose) {
+      const handleCloseKeyDown = (evt: KeyboardEvent) => {
+        console.log(evt)
+        if (evt.key === 'Escape') {
+          onClose()
+        }
+      }
+
+      document.addEventListener('keydown', handleCloseKeyDown)
+
+      return () => {
+        document.removeEventListener('keydown', handleCloseKeyDown)
+      }
     }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
+  }, [onClose, open])
 
   return (
-    <div className={styles.modalOverlay} data-open={open}>
+    <div className={styles.overlay} data-open={open}>
       <dialog
-        className={styles.container}
-        open={open}
+        className={cn(styles.dialog)}
+        data-open={open}
         aria-labelledby='dialog-name'
       >
-        <h2 id='dialog-name' className={styles.title}>
+        <h2 id='dialog-name' className={styles.header}>
           {title}
         </h2>
-        <div className={styles.content}>{children}</div>
+        <div className={styles.body}>{children}</div>
         <ButtonIcon
-          className={styles['button']}
+          className={styles.closeButton}
           icon={'xmark'}
           onClick={onClose}
         />

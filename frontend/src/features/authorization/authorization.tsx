@@ -26,7 +26,6 @@ const Authorization: FC = () => {
     formState: { isSubmitting }
   } = form
 
-  console.dir(document.cookie)
   const handleFormSubmit = handleSubmit(async (data) => {
     try {
       const response = await authLogin({
