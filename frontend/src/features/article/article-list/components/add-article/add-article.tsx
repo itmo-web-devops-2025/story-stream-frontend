@@ -44,7 +44,7 @@ const AddArticle: FC = () => {
 
   return (
     <Form form={form} onSubmit={handleFormSubmit}>
-      <Form.Item name='title' label='Заголловок'>
+      <Form.Item name='title' label='Заголовок'>
         <Input type='title' placeholder='Введите заголовок' />
       </Form.Item>
       <Form.Item name='body' label='Текст статьи'>

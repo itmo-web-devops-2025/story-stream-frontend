@@ -1,5 +1,5 @@
 .text {
-  font-size: var(--font-size-content);
+  font-size: var(--font-size-middle);
   line-height: 1.2;
   margin: 0;
 }
