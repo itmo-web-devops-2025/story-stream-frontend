@@ -1,10 +1,10 @@
-import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
-import { AuthService } from '@/modules/auth/auth.service';
-import { LocalAuthGuard } from '@/modules/auth/guards/local-auth.guard';
-import { FastifyReply } from 'fastify';
-import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
 import { cookieName, TOKEN_TYPE } from '@/modules/auth/auth.const';
+import { AuthService } from '@/modules/auth/auth.service';
+import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
+import { LocalAuthGuard } from '@/modules/auth/guards/local-auth.guard';
+import { Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { FastifyReply } from 'fastify';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -22,7 +22,9 @@ export class AuthController {
   ) {
     const tokens = await this.authService.login(request);
     response.setCookie(cookieName[TOKEN_TYPE.Access], tokens?.accessToken ?? '', {
-      httpOnly: true,
+      httpOnly: false,
+      secure: false,
+      path: '/',
     });
   }
 }

@@ -1,11 +1,10 @@
+import { AppConfig } from '@/config/app.config'
 import App from '@/pages/app'
-import { StrictMode } from 'react'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru.js'
 import { createRoot } from 'react-dom/client'
 
 import '@/assets/styles/index.css'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-)
+dayjs.locale(AppConfig.Locale)
+createRoot(document.getElementById('root')!).render(<App />)

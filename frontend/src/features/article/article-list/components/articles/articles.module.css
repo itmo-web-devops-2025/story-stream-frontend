@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  gap: var(--gap-global);
+  align-items: flex-start;
+}
+
+.header {
+  margin: 0 0 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: var(--font-size-title);
+  line-height: 1;
+  margin: 0;
+  font-weight: 400;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: color 0.3s
+}
+
+.link:hover {
+  color: var(--primary-color);
+}
+
+.articles {
+  flex: 1 0 70%;
+  padding: 12px 0 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.footer {
+  display: block;
+}
+
+.footer-content {
+  display: flex;
+}
+
+.footer-content p {
+  font-size: 20px;
+  margin: 12px 0 0;
+}
+
+.footer-contents {
+  display: flex;
+  gap: 5px;
+}
+
+
+.footer-things {
+  display: flex;
+  gap: 5px;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius-outer);
+  color: var(--text-color);
+  padding: 0 12px;
+  transition: color border-color var(--transition-duration);
+}
+
+.footer-item:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.footer-item span, .footer-item i {
+  font-size: 24px;
+
+}
+
+.footer-item span {
+  font-size: 18px;
+}
+
+.footer p {
+  color: var(--text-color-description);
+  font-size: var(--font-size-content);
+}
