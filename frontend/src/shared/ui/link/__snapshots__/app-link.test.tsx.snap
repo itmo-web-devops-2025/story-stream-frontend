@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppLink > matches snapshot 1`] = `
+<DocumentFragment>
+  <a
+    class="_link_ad8dc7"
+    data-discover="true"
+    href="/"
+  >
+    Home
+  </a>
+</DocumentFragment>
+`;
