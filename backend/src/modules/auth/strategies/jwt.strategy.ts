@@ -15,11 +15,9 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   }
 
   async validate(user: any) {
-    if (!user)
-      throw new HttpException(
-        "You don't have permission for the current resource",
-        HttpStatus.BAD_REQUEST,
-      );
+    if (!user) {
+      throw new HttpException('Токен истек', HttpStatus.UNAUTHORIZED);
+    }
     return { id: user.id, username: user.username };
   }
 }
