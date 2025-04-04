@@ -41,8 +41,9 @@ export class AuthService {
 
     if (!user) throw new NotFoundException(UserError.NotFound);
 
-    if (!(await checkPassword(loginUserDto.password, user.password)))
+    if (!(await checkPassword(loginUserDto.password, user.password))) {
       throw new BadRequestException(UserError.InvalidPassword);
+    }
 
     return user;
   }

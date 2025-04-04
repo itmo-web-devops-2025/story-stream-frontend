@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { UserService } from '@/modules/user/user.service';
 import { CreateUserDto } from '@/modules/user/dto/createUser.dto';
 import { UpdateUserDto } from '@/modules/user/dto/updateUser.dto';
@@ -13,6 +13,7 @@ import {
 } from '@nestjs/swagger';
 import { UserEntity } from '@/modules/user/entities/user.entity';
 import { PostEntity } from '@/modules/post/entities/post.entity';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 
 @ApiTags('users')
 @Controller('users')
@@ -40,7 +41,8 @@ export class UserController {
   @ApiParam({ name: 'id', description: 'ID пользователя' })
   @ApiOkResponse({ description: 'Пользователь успешно обновлен', type: PostEntity })
   @ApiNotFoundResponse({ description: 'Пользователь не найден' })
-  @Patch('id')
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
   }
