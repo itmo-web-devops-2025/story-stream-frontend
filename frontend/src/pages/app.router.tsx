@@ -3,27 +3,25 @@ import ArticlePage from '@/pages/article-page/article-page'
 import Home from '@/pages/home/home'
 import SignIn from '@/pages/sign-in/sign-in'
 import SignUp from '@/pages/sign-up/sign-up'
-import { createBrowserRouter, RouteObject } from 'react-router'
+import { Navigate, RouteObject } from 'react-router'
 
-const router: RouteObject[] = [
+const createRouter = (isAuth: boolean): RouteObject[] => [
   {
     path: PathRoute.Home,
     element: <Home />
   },
   {
     path: '/sign-in',
-    element: <SignIn />
+    element: isAuth ? <Navigate to={PathRoute.Home} /> : <SignIn />
   },
   {
     path: '/sign-up',
-    element: <SignUp />
+    element: isAuth ? <Navigate to={PathRoute.Home} /> : <SignUp />
   },
   {
     path: '/articles',
-    element: <ArticlePage />
+    element: isAuth ? <ArticlePage /> : <SignIn />
   }
 ]
 
-const appRouter = createBrowserRouter(router)
-
-export default appRouter
+export default createRouter
