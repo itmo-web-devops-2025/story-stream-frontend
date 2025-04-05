@@ -1,12 +1,12 @@
+import { UserError } from '@/constants/errorMessage';
+import { checkPassword } from '@/constants/password';
+import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
+import { UserEntity } from '@/modules/user/entities/user.entity';
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from '@/modules/user/entities/user.entity';
-import { Repository } from 'typeorm';
-import { checkPassword } from '@/constants/password';
-import { UserError } from '@/constants/errorMessage';
-import { FastifyRequestWithUser } from '@/modules/auth/auth.types';
 import * as process from 'process';
+import { Repository } from 'typeorm';
 import 'dotenv/config';
 
 @Injectable()
@@ -35,7 +35,7 @@ export class AuthService {
 
   async validateUser(loginUserDto: any) {
     const user = await this.userRepository.findOne({
-      where: { username: loginUserDto.username },
+      where: { username: loginUserDto.login },
       select: { id: true, password: true },
     });
 
