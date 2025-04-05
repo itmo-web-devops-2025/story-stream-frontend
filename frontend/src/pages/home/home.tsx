@@ -15,9 +15,6 @@ const Home = () => {
       {authStatus === AuthStatus.AUTHENTICATED && (
         <Page.Header title={user?.username} description={user?.bio} />
       )}
-      {authStatus === AuthStatus.UNAUTHENTICATED && (
-        <Page.Header title='Добро пожаловать!' />
-      )}
       <Content>
         <ArticleList />
       </Content>

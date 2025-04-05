@@ -1,23 +1,21 @@
-import { useAuth } from '@/contexts/auth.context'
-import { AuthStatus } from '@/enum/core/auth-status.enum'
-import createRouter from '@/pages/app.router'
-import { FC } from 'react'
+import { AuthProvider } from '@/contexts/auth.context'
+import appRouter from '@/pages/app.router'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { FC, StrictMode } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import { RouterProvider } from 'react-router'
 
-const App: FC = () => {
-  const { authStatus } = useAuth()
-  console.log('authStatus', authStatus)
-  const appRouter = createBrowserRouter(
-    createRouter(authStatus === AuthStatus.AUTHENTICATED)
-  )
+const queryClient = new QueryClient()
 
-  return (
-    <>
-      <RouterProvider router={appRouter} />
+const App: FC = () => (
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={appRouter} />
+      </AuthProvider>
       <Toaster />
-    </>
-  )
-}
+    </QueryClientProvider>
+  </StrictMode>
+)
 
 export default App
