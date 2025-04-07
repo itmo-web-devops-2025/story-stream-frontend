@@ -28,7 +28,7 @@ export const useGetPosts = ({
 
 export const useGetPost = (postId: Id) =>
   useQuery({
-    queryKey: ['posts'],
+    queryKey: ['posts', postId],
     enabled: isDefined(postId),
     queryFn: () => apiClient.get<Post>(`/posts/${postId}`)
   })

@@ -26,6 +26,7 @@ const CommentsForm = () => {
   const { mutateAsync: createComment } = useCreateCommentMutation()
   const {
     handleSubmit,
+    resetField,
     formState: { isSubmitting }
   } = form
 
@@ -40,6 +41,7 @@ const CommentsForm = () => {
           text: data.content
         }
       })
+      resetField('content')
     } catch (e) {
       console.error(e)
     }
