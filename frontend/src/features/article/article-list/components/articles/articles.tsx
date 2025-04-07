@@ -26,11 +26,11 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => (
         <div className={styles['footer-things']}>
           <div className={styles['footer-item']} role='button'>
             <Icon icon='heart' />
-            <span>2</span>
+            <span>{article.likes.length}</span>
           </div>
           <div className={styles['footer-item']} role='button'>
             <Icon icon='comment-1' />
-            <span>5</span>
+            <span>{article.comments.length}</span>
           </div>
         </div>
       </header>
@@ -48,7 +48,9 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => (
   </li>
 )
 
-const List = ({ children }: { children: ReactNode }) => <ol className={styles.articles}>{children}</ol>
+const List = ({ children }: { children: ReactNode }) => (
+  <ol className={styles.articles}>{children}</ol>
+)
 
 type Props = {
   posts?: Post[]
