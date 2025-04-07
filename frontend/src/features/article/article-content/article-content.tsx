@@ -1,5 +1,6 @@
 import styles from '@/features/article/article-content/article-content.module.css'
 import Button from '@/shared/ui/button/button'
+import Textarea from '@/shared/ui/textarea/textarea'
 import Form from '@/shared/widgets/form/form'
 import type { Post } from '@/types/post/post.interface'
 import { capitalizeWords } from '@/utils/capitalize-word.util'
@@ -77,10 +78,7 @@ const ArticleContent = ({ article }: ArticleProps) => {
         </ul>
         <Form form={form} className={styles.form}>
           <Form.Item name='content'>
-            <textarea
-              placeholder='Напишите комментарий'
-              className={styles.textArea}
-            />
+            <Textarea placeholder='Напишите комментарий' />
           </Form.Item>
           <Button type='submit'>Отправить</Button>
         </Form>
