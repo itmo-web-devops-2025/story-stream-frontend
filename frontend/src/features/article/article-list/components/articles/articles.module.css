@@ -8,6 +8,7 @@
   margin: 0 0 24px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .title {
@@ -70,7 +71,7 @@
   border: 1px solid var(--secondary-color);
   border-radius: var(--border-radius-outer);
   color: var(--text-color);
-  padding: 0 12px;
+  padding: 12px;
   transition: color border-color var(--transition-duration);
 }
 
