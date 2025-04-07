@@ -2,8 +2,8 @@ import type { PropsWithChildren } from 'react'
 import styles from './page.module.css'
 
 type HeaderProps = {
-  title: string
-  description?: string
+  title?: string
+  description?: string | null
 }
 
 const Header = ({ title, description }: HeaderProps) => (

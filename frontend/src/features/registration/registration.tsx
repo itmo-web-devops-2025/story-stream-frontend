@@ -5,13 +5,17 @@ import AppLink from '@/shared/ui/link/app-link'
 import Card from '@/shared/widgets/card/card'
 import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { AxiosError } from 'axios'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
 
 const schema = z.object({
-  username: z.string(),
+  username: z
+    .string()
+    .min(1, 'Имя пользователя обязательно')
+    .max(100, 'Имя пользователя не может быть длиннее 100 символов'),
   password: z.string().min(6, 'Пароль должен содержать минимум 6 символов')
 })
 
@@ -23,7 +27,7 @@ const Registration: FC = () => {
     mode: 'onSubmit'
   })
 
-  const { handleSubmit } = form
+  const { handleSubmit, setError } = form
 
   const handleFormSubmit = handleSubmit(async (data) => {
     try {
@@ -31,10 +35,17 @@ const Registration: FC = () => {
         body: data
       })
 
-      console.log('user', user)
       toast(`${user.data.username}, добро пожаловать`)
     } catch (e) {
       console.error(e)
+      const error = e as AxiosError<{ message: string }>
+
+      if (
+        error?.response?.data.message ===
+        `Username: ${data.username} - already exists`
+      ) {
+        setError('username', { message: 'Пользователь уже существует' })
+      }
     }
   })
 

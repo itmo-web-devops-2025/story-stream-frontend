@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/contexts/auth.context'
 import appRouter from '@/pages/app.router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { FC, StrictMode } from 'react'
@@ -9,7 +10,9 @@ const queryClient = new QueryClient()
 const App: FC = () => (
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={appRouter} />
+      <AuthProvider>
+        <RouterProvider router={appRouter} />
+      </AuthProvider>
       <Toaster />
     </QueryClientProvider>
   </StrictMode>
