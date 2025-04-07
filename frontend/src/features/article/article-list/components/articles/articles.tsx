@@ -1,5 +1,4 @@
 import { PathRoute } from '@/constants/core/path-route.constant'
-import Aside from '@/features/article/article-list/components/articles/components/aside/aside'
 import Icon from '@/shared/core/icon/icon'
 import Text from '@/shared/ui/text/text'
 import { Post } from '@/types/post/post.interface'
@@ -49,16 +48,17 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => (
   </li>
 )
 
+const List = ({ children }: { children: ReactNode }) => <ol className={styles.articles}>{children}</ol>
+
 type Props = {
+  posts?: Post[]
   children?: ReactNode
 }
 
 const Articles = ({ children }: Props) => (
-  <div className={styles.container}>
-    <ol className={styles.articles}>{children}</ol>
-    <Aside />
-  </div>
+  <div className={styles.container}>{children}</div>
 )
 
 Articles.Item = Item
+Articles.List = List
 export default Articles
