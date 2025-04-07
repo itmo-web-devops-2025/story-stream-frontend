@@ -12,6 +12,7 @@ const HeaderDefault: FC = () => {
     <Header>
       <Logo />
       <NavMenu>
+        <NavMenu.Item linkProps={{ to: '/' }}>Главная</NavMenu.Item>
         {authStatus === AuthStatus.UNAUTHENTICATED && (
           <>
             <NavMenu.Item linkProps={{ to: '/sign-in' }}>Войти</NavMenu.Item>

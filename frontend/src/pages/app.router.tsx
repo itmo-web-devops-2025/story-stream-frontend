@@ -36,12 +36,12 @@ const router: RouteObject[] = [
     )
   },
   {
-    path: PathRoute.Articles,
-    element: <ArticlePage />
-  },
-  {
     path: PathRoute.Profile + `/:userId`,
     element: <Profile />
+  },
+  {
+    path: PathRoute.Articles + `/:articleId`,
+    element: <ArticlePage />
   }
 ]
 

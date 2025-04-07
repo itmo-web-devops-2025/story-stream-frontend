@@ -11,7 +11,7 @@ import { z } from 'zod'
 import 'ckeditor5/ckeditor5.css'
 
 type ArticleProps = {
-  article: Post
+  article?: Post
 }
 
 const schema = z.object({
@@ -24,24 +24,24 @@ const ArticleContent = ({ article }: ArticleProps) => {
     mode: 'onSubmit'
   })
 
+  if (!article) {
+    return null
+  }
+
   return (
     <div className={styles.article}>
       <div className={styles.header}>
         <div className={styles.metaBlock}>
           <p className={styles.author}>
-            {capitalizeWords(article.author.username)}
+            {capitalizeWords(article.user.username)}
           </p>
           <div className={styles.date}>
             <p className={styles.date}>{dateFormat(article.createdAt)} год</p>
           </div>
         </div>
-        <h3 className={styles.description}>{article.description}</h3>
       </div>
 
-      <div
-        className={styles.body}
-        dangerouslySetInnerHTML={{ __html: article.body }}
-      />
+      <div className={styles.body}>{article.body}</div>
       <div className={styles.comments}>
         <h3 className={styles.commentsTitle}>Комментарии</h3>
         <ul className={styles.commentsList}>
