@@ -1,13 +1,12 @@
 import { useCreatePostMutation } from '@/services/api/post.api'
 import Button from '@/shared/ui/button/button'
 import Input from '@/shared/ui/input/input'
+import Textarea from '@/shared/ui/textarea/textarea'
 import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-
-import styles from './add-article.module.css'
 
 const schema = z.object({
   title: z.string().min(3, 'Минимальная длина заголовка 3 символа'),
@@ -25,7 +24,6 @@ const AddArticle: FC = () => {
   const { mutateAsync: createPost } = useCreatePostMutation()
   const {
     handleSubmit,
-    register,
     formState: { isSubmitting }
   } = form
 
@@ -48,13 +46,8 @@ const AddArticle: FC = () => {
         <Input type='title' placeholder='Введите заголовок' />
       </Form.Item>
       <Form.Item name='body' label='Текст статьи'>
-        <textarea
-          className={styles.textarea}
-          placeholder='Введите текст статьи'
-          {...register('body')}
-        />
+        <Textarea placeholder='Введите текст статьи' />
       </Form.Item>
-
       <Button type='submit' disabled={isSubmitting}>
         Добавить статью
       </Button>

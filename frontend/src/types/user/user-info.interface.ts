@@ -1,3 +1,3 @@
 import { User } from '@/types/user/user.interface'
 
-export type UpdateUserDto = Pick<User, 'bio'>
+export type UserInfo = Omit<User, 'password'>

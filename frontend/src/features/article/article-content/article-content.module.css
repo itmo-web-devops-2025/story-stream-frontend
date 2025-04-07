@@ -92,16 +92,3 @@
 .form {
   margin: var(--space-lg) 0 0;
 }
-
-.text-area {
-  width: 100%; /* Можно изменить по необходимости */
-  height: 300px;
-  overflow-y: auto; /* Включает вертикальный скролл */
-  resize: none; /* Запрещает изменение размеров вручную */
-  padding: 8px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-outer);
-  font-size: var(--font-size-little);
-  line-height: 1.3;
-  margin: 0 0 20px;
-}
