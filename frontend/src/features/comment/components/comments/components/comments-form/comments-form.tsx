@@ -49,7 +49,10 @@ const CommentsForm = () => {
   return (
     <Form form={form} className={styles.form} onSubmit={handleFormSubmit}>
       <Form.Item name='content'>
-        <Textarea placeholder='Напишите комментарий' />
+        <Textarea
+          onSubmit={handleFormSubmit}
+          placeholder='Напишите комментарий'
+        />
       </Form.Item>
       <Button type='submit' disabled={isSubmitting}>
         Отправить

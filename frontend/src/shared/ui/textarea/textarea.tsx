@@ -14,7 +14,7 @@ type TProps = {} & DetailedHTMLProps<
   HTMLTextAreaElement
 >
 
-const Textarea: FC<TProps> = ({ className, ...props }: TProps) => {
+const Textarea: FC<TProps> = ({ className, onSubmit, ...props }: TProps) => {
   const {
     register,
     formState: { errors }
@@ -26,13 +26,22 @@ const Textarea: FC<TProps> = ({ className, ...props }: TProps) => {
     return null
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      onSubmit?.(e)
+    }
+  }
+
   return (
     <textarea
       {...register(context.name)}
       className={cn(styles.textarea, className, {
         [styles.error]: errors[context.name]
       })}
+      onKeyDown={handleKeyDown}
       {...props}
+      onSubmit={handleKeyDown}
     />
   )
 }

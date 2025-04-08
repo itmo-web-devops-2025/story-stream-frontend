@@ -65,7 +65,7 @@ const ProfileSetting: FC = () => {
     <Card>
       <Form form={form} onSubmit={handleFormSubmit}>
         <Form.Item name='bio' label='Информация о пользователе'>
-          <Textarea />
+          <Textarea onSubmit={handleFormSubmit} />
         </Form.Item>
         <Button type='submit' disabled={isSubmitting}>
           Обновить
