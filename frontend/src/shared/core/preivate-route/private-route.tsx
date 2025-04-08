@@ -1,6 +1,6 @@
 import { useAuth } from '@/contexts/auth.context'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
-import Spinner from '@/shared/core/spinner/spinner'
+import Spinner from '@/shared/ui/spinner/spinner'
 import type { PropsWithChildren } from 'react'
 import { Navigate } from 'react-router'
 

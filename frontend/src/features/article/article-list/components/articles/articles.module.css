@@ -8,6 +8,7 @@
   margin: 0 0 24px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .title {
@@ -30,7 +31,7 @@
 
 .articles {
   flex: 1 0 70%;
-  padding: 12px 0 0;
+  padding: 32px 0 0;
   margin: 0;
   list-style: none;
   display: flex;
@@ -70,7 +71,7 @@
   border: 1px solid var(--secondary-color);
   border-radius: var(--border-radius-outer);
   color: var(--text-color);
-  padding: 0 12px;
+  padding: 12px;
   transition: color border-color var(--transition-duration);
 }
 
