@@ -1,11 +1,12 @@
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreatePostDto } from '@/modules/post/dto/createPost.dto';
 import { UpdatePostDto } from '@/modules/post/dto/updatePost.dto';
 import { PostEntity } from '@/modules/post/entities/post.entity';
-import { PostLikeEntity } from '@/modules/postLike/entities/postLike.entity';
 import { UserEntity } from '@/modules/user/entities/user.entity';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { postLimit } from '@/modules/post/post.const';
+import { PostLikeEntity } from '@/modules/postLike/entities/postLike.entity';
 
 @Injectable()
 export class PostService {
@@ -66,22 +67,13 @@ export class PostService {
     });
   }
 
-  async getPosts(page: number, size: number) {
-    const [data, total] = await this.postRepository.findAndCount({
+  async getPostsByPage(page: number) {
+    return this.postRepository.find({
       order: { createdAt: 'DESC' },
-      take: size,
-      skip: (page - 1) * size,
+      take: postLimit,
+      skip: (page - 1) * postLimit,
       relations: { user: true, comments: true, likes: true },
     });
-
-    return {
-      posts: data,
-      meta: {
-        total,
-        page,
-        pageSize: size,
-      },
-    };
   }
 
   async update(id: number, updatePostDto: UpdatePostDto) {

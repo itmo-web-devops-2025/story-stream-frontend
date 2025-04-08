@@ -1,26 +1,21 @@
-import { PathRoute } from '@/constants/core/path-route.constant'
+import Aside from '@/features/article/article-list/components/articles/components/aside/aside'
 import Icon from '@/shared/core/icon/icon'
 import Text from '@/shared/ui/text/text'
-import { Post } from '@/types/post/post.interface'
-import { dateFormat } from '@/utils/date-format.util'
 import type { FC, PropsWithChildren, ReactNode } from 'react'
-import { Link } from 'react-router'
+import { Link, To } from 'react-router'
 import styles from './articles.module.css'
 
 type ItemProps = {
-  article: Post
+  href: To
 }
 
-const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => (
+const Item: FC<PropsWithChildren<ItemProps>> = ({ href }) => (
   <li>
     <article className={styles.article}>
       <header className={styles.header}>
         <h2 className={styles.title}>
-          <Link
-            className={styles.link}
-            to={`${PathRoute.Articles}/${article.id}`}
-          >
-            {article.title}
+          <Link className={styles.link} to={href}>
+            Заголовок статьи
           </Link>
         </h2>
         <div className={styles['footer-things']}>
@@ -35,30 +30,32 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => (
         </div>
       </header>
       <section>
-        <Text.Paragraph intrigued={true}>{article.body}</Text.Paragraph>
+        <Text.Paragraph intrigued={true}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
+          deleniti ea est nesciunt nisi, odit repellendus vel? Animi ipsum
+          nesciunt nobis repellat. Animi debitis eligendi, illo numquam porro
+          quasi suscipit?
+        </Text.Paragraph>
       </section>
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <p className={styles.meta}>
-            {dateFormat(article.createdAt)}, {article.user.username}
-          </p>
+          <p className={styles.meta}>12 марта 2025, Иван Иванов, 6 мин</p>
         </div>
       </footer>
     </article>
   </li>
 )
 
-const List = ({ children }: { children: ReactNode }) => <ol className={styles.articles}>{children}</ol>
-
 type Props = {
-  posts?: Post[]
   children?: ReactNode
 }
 
 const Articles = ({ children }: Props) => (
-  <div className={styles.container}>{children}</div>
+  <div className={styles.container}>
+    <ol className={styles.articles}>{children}</ol>
+    <Aside />
+  </div>
 )
 
 Articles.Item = Item
-Articles.List = List
 export default Articles
