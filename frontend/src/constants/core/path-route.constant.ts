@@ -2,5 +2,6 @@ export const PathRoute = {
   Home: '/',
   SignIn: '/sign-in',
   SignUp: '/sign-up',
-  Articles: '/articles'
+  Articles: '/articles',
+  Profile: '/profile'
 } as const
