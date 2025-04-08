@@ -14,6 +14,7 @@
 /* Класс ошибки */
 .input-error {
   border-color: var(--primary-color);
+
 }
 
 .input-error:focus {
@@ -24,6 +25,7 @@
   animation: shake 0.3s ease-in-out; /* Применяем анимацию shake */
 }
 
+/* Анимация shake */
 @keyframes shake {
   0% {
     transform: translateX(0);

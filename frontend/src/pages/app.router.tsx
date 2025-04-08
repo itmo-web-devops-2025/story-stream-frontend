@@ -2,7 +2,6 @@ import { PathRoute } from '@/constants/core/path-route.constant'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
 import ArticlePage from '@/pages/article-page/article-page'
 import Home from '@/pages/home/home'
-import Profile from '@/pages/profile/profile'
 import SignIn from '@/pages/sign-in/sign-in'
 import SignUp from '@/pages/sign-up/sign-up'
 import PrivateRoute from '@/shared/core/preivate-route/private-route'
@@ -38,10 +37,6 @@ const router: RouteObject[] = [
   {
     path: PathRoute.Articles,
     element: <ArticlePage />
-  },
-  {
-    path: PathRoute.Profile + `/:userId`,
-    element: <Profile />
   }
 ]
 

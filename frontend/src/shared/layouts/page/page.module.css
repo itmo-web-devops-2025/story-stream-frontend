@@ -15,22 +15,11 @@
   gap: 10px;
 }
 
-
-.link {
-  text-decoration: none;
-  transition: 0.3s color;
-}
-
-.link:hover {
-  color: var(--primary-color);
-}
-
-.title, .link {
+.title {
   font-size: var(--font-size-title);
   line-height: 1;
   margin: 0;
   font-weight: 400;
-  color: var(--text-color);
 }
 
 .description {
