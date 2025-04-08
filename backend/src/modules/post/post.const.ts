@@ -1,1 +1,1 @@
-export const postLimit = 10;
+export const postLimit = 25;

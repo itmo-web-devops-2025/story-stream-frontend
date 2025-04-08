@@ -1,10 +1,3 @@
-import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
-import { CreatePostDto } from '@/modules/post/dto/createPost.dto';
-import { UpdatePostDto } from '@/modules/post/dto/updatePost.dto';
-import { PostEntity } from '@/modules/post/entities/post.entity';
-import { postLimit } from '@/modules/post/post.const';
-import { PostService } from '@/modules/post/post.service';
-import { FastifyRequestWithUser } from '@/types/request';
 import {
   Body,
   Controller,
@@ -17,6 +10,11 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
+import { PostService } from '@/modules/post/post.service';
+import { CreatePostDto } from '@/modules/post/dto/createPost.dto';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
+import { FastifyRequestWithUser } from '@/types/request';
+import { UpdatePostDto } from '@/modules/post/dto/updatePost.dto';
 import {
   ApiBadRequestResponse,
   ApiCreatedResponse,
@@ -27,6 +25,7 @@ import {
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
+import { PostEntity } from '@/modules/post/entities/post.entity';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -52,26 +51,11 @@ export class PostController {
   }
 
   @ApiOperation({ summary: 'Получить по пагинации посты' })
-  @ApiQuery({
-    name: 'page',
-    required: false,
-    description: 'Номер страницы',
-    example: 1,
-  })
-  @ApiQuery({
-    name: 'size',
-    required: false,
-    description: 'Размер страницы',
-    example: 10,
-  })
-  @ApiOkResponse({
-    description: 'Посты успешно получены',
-    type: PostEntity,
-    isArray: true,
-  })
+  @ApiQuery({ name: 'page', description: 'Номер страницы' })
+  @ApiOkResponse({ description: 'Посты успешно получены', type: PostEntity, isArray: true })
   @Get()
-  async getPosts(@Query('page') page = 1, @Query('size') size = postLimit) {
-    return this.postService.getPosts(+page, +size);
+  async getPostsByPage(@Query('page') page: number = 1) {
+    return this.postService.getPostsByPage(+page);
   }
 
   @ApiOperation({ summary: 'Поставить (убрать) лайк определенному посту (JWT)' })
