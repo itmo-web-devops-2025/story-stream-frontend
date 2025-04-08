@@ -1,11 +1,12 @@
 import { Comment } from '@/types/comment/comment.interface'
+import { Id } from '@/types/core/id.type'
 import { User } from '@/types/user/user.interface'
 
 export interface Post {
-  id: number
+  id: Id
   title: string
   body: string
-  likes: string[]
+  likes: { id: Id }[]
   favoritesCount: 0
   createdAt: Date
   updatedAt: Date

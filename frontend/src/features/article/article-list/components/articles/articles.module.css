@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 5px;
 }
 
 .title {
@@ -72,6 +73,8 @@
   border-radius: var(--border-radius-outer);
   color: var(--text-color);
   padding: 12px;
+  width: 40px;
+  height: 30px;
   transition: color border-color var(--transition-duration);
 }
 

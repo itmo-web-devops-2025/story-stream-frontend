@@ -38,3 +38,17 @@ export const useGetPost = (postId: Id) =>
     enabled: isDefined(postId),
     queryFn: () => apiClient.get<Post>(`/posts/${postId}`)
   })
+
+export const useLikePostMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationKey: ['likePost'],
+    mutationFn: ({ postId }: { postId: Id }) =>
+      apiClient.patch(`/posts/${postId}/like`),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['posts', variables.postId] })
+      queryClient.invalidateQueries({ queryKey: ['posts'] })
+    }
+  })
+}

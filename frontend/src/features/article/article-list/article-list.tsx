@@ -1,8 +1,11 @@
+import { useAuth } from '@/contexts/auth.context'
+import { AuthStatus } from '@/enum/core/auth-status.enum'
 import AddArticle from '@/features/article/article-list/components/add-article/add-article'
-import ArticleTools from '@/features/article/article-list/components/article-tools/article-tools'
 import Articles from '@/features/article/article-list/components/articles/articles'
 import Aside from '@/features/article/article-list/components/articles/components/aside/aside'
+import ArticleTools from '@/features/article/article-tools/article-tools'
 import { useGetPosts } from '@/services/api/post.api'
+import ButtonIcon from '@/shared/ui/button-icon/button-icon'
 import Spinner from '@/shared/ui/spinner/spinner'
 import Modal from '@/shared/widgets/modal/modal'
 import { FC, useState } from 'react'
@@ -10,6 +13,7 @@ import { FC, useState } from 'react'
 import styles from './article-list.module.css'
 
 const ArticleList: FC = () => {
+  const { authStatus } = useAuth()
   const [openedModal, setOpenedModal] = useState(false)
   const [page, setPage] = useState(1)
   const { data: responsePosts, isLoading } = useGetPosts({
@@ -32,7 +36,15 @@ const ArticleList: FC = () => {
 
   return (
     <div className={styles.articleList}>
-      <ArticleTools onAddButtonClick={handleAddButtonClick} />
+      <ArticleTools>
+        {authStatus === AuthStatus.AUTHENTICATED && (
+          <>
+            <ButtonIcon icon='plus' onClick={handleAddButtonClick}>
+              Добавить статью
+            </ButtonIcon>
+          </>
+        )}
+      </ArticleTools>
       {isLoading ? (
         <Spinner />
       ) : (
