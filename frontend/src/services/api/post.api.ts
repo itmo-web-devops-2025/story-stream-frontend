@@ -6,14 +6,20 @@ import { GetPostsDto } from '@/types/post/get-posts-dto.interface'
 import { Post } from '@/types/post/post.interface'
 import { CreateUserRdo } from '@/types/user/create-user-rdo.type'
 import { isDefined } from '@/utils/is-defined.util'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-export const useCreatePostMutation = () =>
-  useMutation({
-    mutationKey: ['createArticle'],
+export const useCreatePostMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationKey: ['create', 'posts'],
     mutationFn: ({ body }: { body: CreatePostDto }) =>
-      apiClient.post<CreateUserRdo>('/posts', body)
+      apiClient.post<CreateUserRdo>('/posts', body),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['posts'] })
+    }
   })
+}
 
 export const useGetPosts = ({
   query = { page: 1, size: 10 }

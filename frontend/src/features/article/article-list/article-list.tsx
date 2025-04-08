@@ -58,7 +58,7 @@ const ArticleList: FC = () => {
         title='Добавить статью'
         onClose={() => setOpenedModal(false)}
       >
-        <AddArticle />
+        <AddArticle onOpenedModal={setOpenedModal} />
       </Modal>
     </div>
   )

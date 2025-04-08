@@ -4,7 +4,7 @@ import Input from '@/shared/ui/input/input'
 import Textarea from '@/shared/ui/textarea/textarea'
 import Form from '@/shared/widgets/form/form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { FC } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -13,9 +13,11 @@ const schema = z.object({
   body: z.string().min(50, 'Минимальная длина текста 50 символа')
 })
 
-const AddArticle: FC = () => {
-  console.log(`AddArticle component is working`)
+type TProps = {
+  onOpenedModal: Dispatch<SetStateAction<boolean>>
+}
 
+const AddArticle = ({ onOpenedModal }: TProps) => {
   const form = useForm({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
@@ -35,6 +37,8 @@ const AddArticle: FC = () => {
           body: data.body
         }
       })
+
+      onOpenedModal(false)
     } catch (e) {
       console.error(e)
     }

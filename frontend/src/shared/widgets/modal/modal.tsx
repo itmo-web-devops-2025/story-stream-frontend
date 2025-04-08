@@ -19,7 +19,6 @@ const Modal: FC<PropsWithChildren<TProps>> = ({
   useEffect(() => {
     if (open && onClose) {
       const handleCloseKeyDown = (evt: KeyboardEvent) => {
-        console.log(evt)
         if (evt.key === 'Escape') {
           onClose()
         }
