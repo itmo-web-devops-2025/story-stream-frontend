@@ -6,5 +6,5 @@ export const useAuthLoginMutation = () =>
   useMutation({
     mutationKey: ['login'],
     mutationFn: ({ body }: { body: AuthLoginDto }) =>
-      apiClient.post<{ accessToken: string }>('/auth/login', body)
+      apiClient.post('/auth/login', body, { withCredentials: true })
   })

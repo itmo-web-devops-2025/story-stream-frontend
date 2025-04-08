@@ -1,38 +1,12 @@
-import type {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  PropsWithChildren
-} from 'react'
+import type { PropsWithChildren } from 'react'
 import { Link, LinkProps } from 'react-router'
 import styles from './nav-menu.module.css'
 
-type TProps = {
-  linkProps?: LinkProps
-  buttonProps?: DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
-  isButton?: boolean
-}
-
-const Item = ({
-  children,
-  isButton,
-  linkProps,
-  buttonProps
-}: PropsWithChildren<TProps>) => (
+const Item = ({ children, ...props }: PropsWithChildren<LinkProps>) => (
   <li className={styles['item']}>
-    {isButton ? (
-      <button className={styles['link']} {...buttonProps}>
-        {children}
-      </button>
-    ) : (
-      linkProps && (
-        <Link className={styles['link']} {...linkProps}>
-          {children}
-        </Link>
-      )
-    )}
+    <Link className={styles['link']} {...props}>
+      {children}
+    </Link>
   </li>
 )
 

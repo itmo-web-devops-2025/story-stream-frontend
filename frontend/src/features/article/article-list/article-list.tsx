@@ -1,6 +1,4 @@
 import { PathRoute } from '@/constants/core/path-route.constant'
-import { useAuth } from '@/contexts/auth.context'
-import { AuthStatus } from '@/enum/core/auth-status.enum'
 import AddArticle from '@/features/article/article-list/components/add-article/add-article'
 import ArticleTools from '@/features/article/article-list/components/article-tools/article-tools'
 import Articles from '@/features/article/article-list/components/articles/articles'
@@ -8,7 +6,7 @@ import Modal from '@/shared/widgets/modal/modal'
 import { FC, useState } from 'react'
 
 const ArticleList: FC = () => {
-  const { authStatus } = useAuth()
+  console.log(`ArticleList component is working`)
   const [openedModal, setOpenedModal] = useState(false)
 
   const handleAddButtonClick = () => {
@@ -18,9 +16,7 @@ const ArticleList: FC = () => {
   return (
     <>
       <Articles>
-        {authStatus === AuthStatus.AUTHENTICATED && (
-          <ArticleTools onAddButtonClick={handleAddButtonClick} />
-        )}
+        <ArticleTools onAddButtonClick={handleAddButtonClick} />
         <Articles.Item href={PathRoute.Articles} />
         <Articles.Item href={PathRoute.Articles} />
         <Articles.Item href={PathRoute.Articles} />

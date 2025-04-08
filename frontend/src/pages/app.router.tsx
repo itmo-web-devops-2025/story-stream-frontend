@@ -1,10 +1,8 @@
 import { PathRoute } from '@/constants/core/path-route.constant'
-import { AuthStatus } from '@/enum/core/auth-status.enum'
 import ArticlePage from '@/pages/article-page/article-page'
 import Home from '@/pages/home/home'
 import SignIn from '@/pages/sign-in/sign-in'
 import SignUp from '@/pages/sign-up/sign-up'
-import PrivateRoute from '@/shared/core/preivate-route/private-route'
 import { createBrowserRouter, RouteObject } from 'react-router'
 
 const router: RouteObject[] = [
@@ -13,32 +11,19 @@ const router: RouteObject[] = [
     element: <Home />
   },
   {
-    path: PathRoute.SignIn,
-    element: (
-      <PrivateRoute
-        redirectFor={AuthStatus.AUTHENTICATED}
-        redirectTo={PathRoute.Home}
-      >
-        <SignIn />
-      </PrivateRoute>
-    )
+    path: '/sign-in',
+    element: <SignIn />
   },
   {
-    path: PathRoute.SignUp,
-    element: (
-      <PrivateRoute
-        redirectFor={AuthStatus.AUTHENTICATED}
-        redirectTo={PathRoute.Home}
-      >
-        <SignUp />
-      </PrivateRoute>
-    )
+    path: '/sign-up',
+    element: <SignUp />
   },
   {
-    path: PathRoute.Articles,
+    path: '/articles',
     element: <ArticlePage />
   }
 ]
 
 const appRouter = createBrowserRouter(router)
+
 export default appRouter
