@@ -1,25 +1,35 @@
 import ButtonIcon from '@/shared/ui/button-icon/button-icon'
+import { ModalProps } from '@/shared/widgets/modal/modal.type'
 import cn from 'classnames'
 import { FC, PropsWithChildren, useEffect } from 'react'
 
 import styles from './modal.module.css'
 
-type TProps = {
-  open?: boolean
-  title: string
-  onClose?: () => void
-}
-
-const Modal: FC<PropsWithChildren<TProps>> = ({
+const Modal: FC<PropsWithChildren<ModalProps>> = ({
   open = false,
   title,
   onClose,
   children
 }) => {
   useEffect(() => {
+    const main = document.querySelector('main')
+    if (!main) return
+
+    if (open) {
+      main.setAttribute('data-open', 'true')
+    } else {
+      main.removeAttribute('data-open')
+    }
+
+    // Очистка на размонтирование
+    return () => {
+      main.removeAttribute('data-open')
+    }
+  }, [open])
+
+  useEffect(() => {
     if (open && onClose) {
       const handleCloseKeyDown = (evt: KeyboardEvent) => {
-        console.log(evt)
         if (evt.key === 'Escape') {
           onClose()
         }

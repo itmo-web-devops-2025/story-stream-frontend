@@ -1,8 +1,12 @@
-import AddArticle from '@/features/article/article-list/components/add-article/add-article'
-import ArticleTools from '@/features/article/article-list/components/article-tools/article-tools'
+import { useAuth } from '@/contexts/auth.context'
+import { AuthStatus } from '@/enum/core/auth-status.enum'
+import { ModeForm } from '@/enum/core/mode-form.enum'
 import Articles from '@/features/article/article-list/components/articles/articles'
 import Aside from '@/features/article/article-list/components/articles/components/aside/aside'
+import ArticleTools from '@/features/article/article-tools/article-tools'
+import FormArticle from '@/features/article/form-article/form-article'
 import { useGetPosts } from '@/services/api/post.api'
+import ButtonIcon from '@/shared/ui/button-icon/button-icon'
 import Spinner from '@/shared/ui/spinner/spinner'
 import Modal from '@/shared/widgets/modal/modal'
 import { FC, useState } from 'react'
@@ -10,7 +14,8 @@ import { FC, useState } from 'react'
 import styles from './article-list.module.css'
 
 const ArticleList: FC = () => {
-  const [openedModal, setOpenedModal] = useState(false)
+  const { authStatus } = useAuth()
+  const [modeForm, setModeForm] = useState<ModeForm>(ModeForm.CLOSE)
   const [page, setPage] = useState(1)
   const { data: responsePosts, isLoading } = useGetPosts({
     query: {
@@ -22,7 +27,7 @@ const ArticleList: FC = () => {
   const posts = responsePosts?.data.posts || []
 
   const handleAddButtonClick = () => {
-    setOpenedModal(true)
+    setModeForm(ModeForm.ADD)
   }
 
   const handlePageChange = (newPage: number) => setPage(newPage)
@@ -32,7 +37,15 @@ const ArticleList: FC = () => {
 
   return (
     <div className={styles.articleList}>
-      <ArticleTools onAddButtonClick={handleAddButtonClick} />
+      <ArticleTools>
+        {authStatus === AuthStatus.AUTHENTICATED && (
+          <>
+            <ButtonIcon icon='plus' onClick={handleAddButtonClick}>
+              Добавить статью
+            </ButtonIcon>
+          </>
+        )}
+      </ArticleTools>
       {isLoading ? (
         <Spinner />
       ) : (
@@ -54,11 +67,11 @@ const ArticleList: FC = () => {
         </Articles>
       )}
       <Modal
-        open={openedModal}
+        open={ModeForm.ADD === modeForm}
         title='Добавить статью'
-        onClose={() => setOpenedModal(false)}
+        onClose={() => setModeForm(ModeForm.CLOSE)}
       >
-        <AddArticle />
+        <FormArticle onSetModeForm={setModeForm} mode={modeForm} />
       </Modal>
     </div>
   )
