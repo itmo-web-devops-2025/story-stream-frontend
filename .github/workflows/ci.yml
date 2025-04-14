@@ -128,5 +128,5 @@ jobs:
       - name: 📡 Update docker service via SSH
         run: |
           ssh admin@music-demo.ru \
-            "docker compose --file ~/story-stream/story-stream-docker/docker-compose.local.yml pull && \
-            docker compose --file ~/story-stream/story-stream-docker/docker-compose.local.yml up --force-recreate --build -d"
+            "docker compose --file ~/story-stream/story-stream-docker/docker-compose.yml pull && \
+            docker compose --file ~/story-stream/story-stream-docker/docker-compose.yml up --force-recreate --build -d"
