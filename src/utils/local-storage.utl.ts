@@ -29,6 +29,7 @@ const isJsonString = (str: string): boolean => {
     JSON.parse(str)
     return true
   } catch (e) {
+    console.error(e)
     return false
   }
 }

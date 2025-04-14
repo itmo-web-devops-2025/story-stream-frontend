@@ -1,5 +1,5 @@
-import { useAuth } from '@/contexts/auth.context'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
+import { useAuth } from '@/hooks/use-auth.hook'
 import Spinner from '@/shared/ui/spinner/spinner'
 import type { PropsWithChildren } from 'react'
 import { Navigate } from 'react-router'
