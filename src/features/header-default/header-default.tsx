@@ -1,5 +1,5 @@
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
-import { useAuth } from '@/hooks/use-auth.hook'
 import Logo from '@/shared/core/logo/logo'
 import Header from '@/shared/layouts/header/header'
 import NavMenu from '@/shared/widgets/nav-menu/nav-menu'
