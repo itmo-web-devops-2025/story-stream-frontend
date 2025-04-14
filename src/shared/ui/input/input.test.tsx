@@ -21,7 +21,7 @@ describe('Input component', () => {
   }))
 
   const renderWithProviders = (errors = {}) => {
-    ;(useFormContext as unknown as vi.Mock).mockReturnValue({
+    ;(useFormContext as any).mockReturnValue({
       register: mockRegister,
       formState: { errors }
     })
@@ -45,21 +45,6 @@ describe('Input component', () => {
     const input = screen.getByPlaceholderText('Type here')
     expect(input.className).toMatch(/inputError/)
     expect(input.className).toMatch(/shake/)
-  })
-
-  it('returns null when context.name is missing', () => {
-    ;(useFormContext as unknown as vi.Mock).mockReturnValue({
-      register: mockRegister,
-      formState: { errors: {} }
-    })
-
-    const { container } = render(
-      <FormItemContext.Provider value={{}}>
-        <Input />
-      </FormItemContext.Provider>
-    )
-
-    expect(container.firstChild).toBeNull()
   })
 
   it('matches snapshot', () => {

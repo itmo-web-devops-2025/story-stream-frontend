@@ -1,4 +1,4 @@
-import { AuthProvider } from '@/contexts/auth.context'
+import { AuthProvider } from '@/contexts/auth/auth.context'
 import appRouter from '@/pages/app.router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { FC, StrictMode } from 'react'
