@@ -68,7 +68,7 @@ jobs:
     name: 🐳 Build & Push Docker Image
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    needs: [ build ]
+    needs: [ lint, test ]
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
