@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:update-snapshot": "vitest -u",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage"
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^9.5.0",
