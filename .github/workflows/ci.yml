@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  SERVICE_NAME: story-stream-frontend
+  CONTAINER_NAME: story-stream-frontend
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/story-stream-frontend
 
 jobs:
@@ -128,5 +128,5 @@ jobs:
       - name: 📡 Update docker service via SSH
         run: |
           ssh admin@music-demo.ru \
-            "docker service update --force --with-registry-auth \
-            --image ${IMAGE_NAME}:${VERSION} ${SERVICE_NAME}"
+            "docker compose --file ~/story-stream/story-stream-docker/docker-compose.local.yml pull && \
+            docker compose --file ~/story-stream/story-stream-docker/docker-compose.local.yml up --force-recreate --build -d"
