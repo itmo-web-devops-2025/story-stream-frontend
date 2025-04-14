@@ -96,3 +96,37 @@ jobs:
         run: |
           docker push $IMAGE_NAME:latest
           docker push $IMAGE_NAME:$VERSION
+
+  deploy:
+    name: 🚀 SSH Update Service
+    runs-on: ubuntu-latest
+    needs: [ docker ]
+    #    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    env:
+      SERVICE_NAME: story-stream-frontend
+      VERSION: ${{ steps.pkg.outputs.version }}
+      IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/story-stream-frontend
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🧾 Read version from package.json
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: 🔐 Add remote SSH host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan music-demo.ru >> ~/.ssh/known_hosts
+
+      - name: 🔐 Set up SSH agent
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: 📡 Update docker service via SSH
+        run: |
+          ssh admin@music-demo.ru \
+            "docker service update --force --with-registry-auth \
+            --image ${IMAGE_NAME}:${VERSION} ${SERVICE_NAME}"
