@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Text component > matches snapshot for Paragraph 1`] = `
+<DocumentFragment>
+  <p
+    class="_text_435960"
+  >
+    Test Paragraph
+  </p>
+</DocumentFragment>
+`;

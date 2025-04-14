@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input component > matches snapshot 1`] = `
+<DocumentFragment>
+  <input
+    class="_input_dcb563"
+    name="test"
+    placeholder="Type here"
+  />
+</DocumentFragment>
+`;
