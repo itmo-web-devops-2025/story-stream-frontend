@@ -1,5 +1,5 @@
 import { PathRoute } from '@/constants/core/path-route.constant'
-import { useAuth } from '@/contexts/auth.context'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { useLikePostMutation } from '@/services/api/post.api'
 import Icon from '@/shared/core/icon/icon'
 import Heart from '@/shared/icons/heart/heart'

@@ -1,4 +1,4 @@
-import { useAuth } from '@/contexts/auth.context'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
 import Spinner from '@/shared/ui/spinner/spinner'
 import type { PropsWithChildren } from 'react'

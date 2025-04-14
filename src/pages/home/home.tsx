@@ -1,5 +1,5 @@
 import { PathRoute } from '@/constants/core/path-route.constant'
-import { useAuth } from '@/contexts/auth.context'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
 import ArticleList from '@/features/article/article-list/article-list'
 import HeaderDefault from '@/features/header-default/header-default'

@@ -1,4 +1,4 @@
-import { useAuth } from '@/contexts/auth.context'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { AuthStatus } from '@/enum/core/auth-status.enum'
 import { ModeForm } from '@/enum/core/mode-form.enum'
 import styles from '@/features/article/article-content/article-content.module.css'

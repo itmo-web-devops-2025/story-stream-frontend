@@ -1,6 +1,6 @@
 import { ACCESS_TOKEN } from '@/constants/core/local-storage-keys.constant'
 import { PathRoute } from '@/constants/core/path-route.constant'
-import { useAuth } from '@/contexts/auth.context'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { useAuthLoginMutation } from '@/services/api/auth.api'
 import Button from '@/shared/ui/button/button'
 import Input from '@/shared/ui/input/input'
