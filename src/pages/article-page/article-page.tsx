@@ -12,8 +12,6 @@ const ArticlePage: FC = () => {
   const { data: postResponse } = useGetPost(articleId)
   const post = postResponse?.data
 
-  console.log('post', post)
-
   return (
     <Page>
       <HeaderDefault />

@@ -20,21 +20,6 @@ export const saveToLocalStorage = (key: string, value: unknown): void => {
 }
 
 /**
- * Проверяет, является ли строка допустимым JSON
- * @param str Строка для проверки
- * @returns true, если строка является JSON
- */
-const isJsonString = (str: string): boolean => {
-  try {
-    JSON.parse(str)
-    return true
-  } catch (e) {
-    console.error(e)
-    return false
-  }
-}
-
-/**
  * Получает данные из localStorage
  * @param key Ключ, по которому хранятся данные
  * @returns Данные, сохраненные по ключу (если данных нет, возвращается null)
@@ -43,7 +28,11 @@ export const getFromLocalStorage = <T>(key: string): T | null => {
   try {
     const value = localStorage.getItem(key)
     if (value) {
-      return isJsonString(value) ? JSON.parse(value) : value
+      try {
+        return JSON.parse(value)
+      } catch {
+        return value as unknown as T
+      }
     }
     return null
   } catch (error) {
