@@ -96,3 +96,12 @@
   color: var(--text-color-description);
   font-size: var(--font-size-content);
 }
+
+.comment-button {
+  cursor: inherit;
+}
+
+.comment-button:hover {
+  color: inherit;
+  border-color: inherit;
+}

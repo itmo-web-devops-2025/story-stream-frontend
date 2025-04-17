@@ -95,7 +95,10 @@ const FormArticle = ({ mode, article, onSetModeForm }: TProps) => {
             <Input type='text' placeholder='Введите заголовок' />
           </Form.Item>
           <Form.Item name='body' label='Текст статьи'>
-            <Textarea placeholder='Введите текст статьи' />
+            <Textarea
+              placeholder='Введите текст статьи'
+              onSubmit={handleFormSubmit}
+            />
           </Form.Item>
         </>
       )}

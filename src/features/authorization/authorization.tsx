@@ -1,4 +1,3 @@
-import { ACCESS_TOKEN } from '@/constants/core/local-storage-keys.constant'
 import { PathRoute } from '@/constants/core/path-route.constant'
 import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { useAuthLoginMutation } from '@/services/api/auth.api'
@@ -8,7 +7,6 @@ import AppLink from '@/shared/ui/link/app-link'
 import Card from '@/shared/widgets/card/card'
 import Form from '@/shared/widgets/form/form'
 import { JwtPayload } from '@/types/auth/jwt-payload.interface'
-import { saveToLocalStorage } from '@/utils/local-storage.utl'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
 import { jwtDecode } from 'jwt-decode'
@@ -52,7 +50,6 @@ const Authorization: FC = () => {
         }
       })
 
-      saveToLocalStorage(ACCESS_TOKEN, accessToken)
       const { username } = jwtDecode<JwtPayload>(accessToken)
 
       toast(`${username}, добро пожаловать`)
