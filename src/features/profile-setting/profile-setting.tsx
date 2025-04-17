@@ -1,3 +1,5 @@
+import { PathRoute } from '@/constants/core/path-route.constant'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { useGetUser, useUpdateUserMutation } from '@/services/api/user.api'
 import Button from '@/shared/ui/button/button'
 import Textarea from '@/shared/ui/textarea/textarea'
@@ -8,7 +10,7 @@ import { AxiosError } from 'axios'
 import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -20,6 +22,8 @@ const schema = z.object({
 
 const ProfileSetting: FC = () => {
   const { userId } = useParams()
+  const navigate = useNavigate()
+  const { user: userSettings } = useAuth()
   const form = useForm({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
@@ -27,6 +31,12 @@ const ProfileSetting: FC = () => {
 
   const { data: userRepose } = useGetUser(userId)
   const { mutateAsync: updateUser } = useUpdateUserMutation()
+
+  useEffect(() => {
+    if (userId !== String(userSettings?.id)) {
+      navigate(PathRoute.Home)
+    }
+  }, [navigate, userId, userSettings?.id])
 
   const user = userRepose?.data
 
