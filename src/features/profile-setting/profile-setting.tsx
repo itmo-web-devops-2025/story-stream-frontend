@@ -48,12 +48,11 @@ const ProfileSetting: FC = () => {
     }
 
     try {
-      const result = await updateUser({
+      await updateUser({
         userId: userId,
         body: data
       })
 
-      console.log(result)
       toast(`Информация успешно обновлена`)
     } catch (e) {
       const error = e as AxiosError<{ message: string }>

@@ -34,7 +34,7 @@ const FormArticle = ({ mode, article, onSetModeForm }: TProps) => {
   const isAddMode = mode === ModeForm.ADD
   const isDeleteMode = mode === ModeForm.DELETE
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: isDeleteMode ? undefined : zodResolver(schema),
     mode: 'onSubmit'
   })
 

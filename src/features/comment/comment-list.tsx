@@ -6,10 +6,7 @@ type TProps = {
   comments: Comment[]
 }
 
-const CommentList: FC<TProps> = ({ comments }) => {
-  console.log(`CommentList component is working`)
-
-  return (
+const CommentList: FC<TProps> = ({ comments }) => (
     <Comments>
       <Comments.List>
         {comments.map((comment) => (
@@ -22,6 +19,5 @@ const CommentList: FC<TProps> = ({ comments }) => {
       </Comments.List>
     </Comments>
   )
-}
 
 export default CommentList
