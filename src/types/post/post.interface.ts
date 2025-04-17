@@ -6,7 +6,7 @@ export interface Post {
   id: Id
   title: string
   body: string
-  likes: { id: Id }[]
+  likes: { id: Id; user: User }[]
   favoritesCount: 0
   createdAt: Date
   updatedAt: Date

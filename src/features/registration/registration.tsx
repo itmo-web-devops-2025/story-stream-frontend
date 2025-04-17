@@ -1,14 +1,20 @@
+import { PathRoute } from '@/constants/core/path-route.constant'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
+import { useAuthLoginMutation } from '@/services/api/auth.api'
 import { useCreateUserMutation } from '@/services/api/user.api'
 import Button from '@/shared/ui/button/button'
 import Input from '@/shared/ui/input/input'
 import AppLink from '@/shared/ui/link/app-link'
 import Card from '@/shared/widgets/card/card'
 import Form from '@/shared/widgets/form/form'
+import { JwtPayload } from '@/types/auth/jwt-payload.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
+import { jwtDecode } from 'jwt-decode'
 import type { FC } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -21,7 +27,10 @@ const schema = z.object({
 
 const Registration: FC = () => {
   const { mutateAsync: createUser, isPending } = useCreateUserMutation()
+  const { mutateAsync: authLogin } = useAuthLoginMutation()
+  const { login } = useAuth()
 
+  const navigate = useNavigate()
   const form = useForm({
     resolver: zodResolver(schema),
     mode: 'onSubmit'
@@ -31,11 +40,24 @@ const Registration: FC = () => {
 
   const handleFormSubmit = handleSubmit(async (data) => {
     try {
-      const user = await createUser({
+      await createUser({
         body: data
       })
 
-      toast(`${user.data.username}, добро пожаловать`)
+      const {
+        data: { accessToken }
+      } = await authLogin({
+        body: {
+          login: data.username,
+          password: data.password
+        }
+      })
+
+      const { username } = jwtDecode<JwtPayload>(accessToken)
+
+      toast(`${username}, добро пожаловать`)
+      login(accessToken)
+      navigate(PathRoute.Home)
     } catch (e) {
       console.error(e)
       const error = e as AxiosError<{ message: string }>

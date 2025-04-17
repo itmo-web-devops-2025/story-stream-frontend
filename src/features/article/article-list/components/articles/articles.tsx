@@ -27,7 +27,7 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => {
     }
   }
 
-  const hasCurrentUser = article.likes.some((like) => like.id === user?.id)
+  const hasCurrentUser = article.likes.some((like) => like.user.id === user?.id)
 
   return (
     <li>
@@ -52,7 +52,7 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => {
               <Heart isFill={hasCurrentUser} />
               <span>{article.likes.length}</span>
             </div>
-            <div className={styles['footer-item']} role='button'>
+            <div className={cn(styles['footer-item'], styles.commentButton)}>
               <Icon icon='comment-1' />
               <span>{article.comments.length}</span>
             </div>

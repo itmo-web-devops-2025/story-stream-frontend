@@ -15,7 +15,7 @@ const CommentList: FC<TProps> = ({ comments }) => {
         {comments.map((comment) => (
           <Comments.Item
             key={comment.id}
-            author={'Аноним'}
+            author={comment.user.username}
             content={comment.text}
           />
         ))}
