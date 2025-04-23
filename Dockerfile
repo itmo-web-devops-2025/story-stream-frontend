@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm i
 
 COPY . .
-COPY .env-example .env
+COPY .env .env
 RUN npm run build
 
 FROM nginx:stable-alpine AS production
