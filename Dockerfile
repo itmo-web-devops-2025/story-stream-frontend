@@ -1,11 +1,13 @@
 FROM node:23-alpine AS builder
 WORKDIR /app
 
+ARG VITE_API_URL
+RUN echo "VITE_API_URL=$VITE_API_URL" > .env
+
 COPY package*.json ./
 RUN npm i
 
 COPY . .
-COPY .env-example .env
 RUN npm run build
 
 FROM nginx:stable-alpine AS production
