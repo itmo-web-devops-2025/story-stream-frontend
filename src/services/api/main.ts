@@ -1,9 +1,10 @@
+import { AppConfig } from '@/config/app.config'
 import { ACCESS_TOKEN } from '@/constants/core/local-storage-keys.constant'
 import { getFromLocalStorage } from '@/utils/local-storage.utl'
 import axios from 'axios'
 
 export const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_SERVER || 'http://localhost:4000',
+  baseURL: AppConfig.UrlServer,
   headers: {
     'Content-Type': 'application/json'
   }

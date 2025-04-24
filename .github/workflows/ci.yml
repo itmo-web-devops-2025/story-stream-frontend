@@ -90,7 +90,6 @@ jobs:
       - name: 🏗️ Build and tag Docker image
         run: |
           docker build \
-            --build-arg VITE_API_URL=${{ secrets.API_URL }} \
             -t $IMAGE_NAME:latest \
             -t $IMAGE_NAME:$VERSION \
             ./
