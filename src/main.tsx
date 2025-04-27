@@ -8,3 +8,4 @@ import '@/assets/styles/index.css'
 
 dayjs.locale(AppConfig.Locale)
 createRoot(document.getElementById('root')!).render(<App />)
+console.log(`Подключение к серверу: ${AppConfig.UrlServer}`)
