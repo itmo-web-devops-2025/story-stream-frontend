@@ -1,10 +1,10 @@
-import { AppConfig } from '@/config/app.config'
 import { ACCESS_TOKEN } from '@/constants/core/local-storage-keys.constant'
+import { getApiBaseUrl } from '@/utils/get-api-base-url.util'
 import { getFromLocalStorage } from '@/utils/local-storage.utl'
 import axios from 'axios'
 
 export const apiClient = axios.create({
-  baseURL: AppConfig.UrlServer,
+  baseURL: getApiBaseUrl(),
   headers: {
     'Content-Type': 'application/json'
   }

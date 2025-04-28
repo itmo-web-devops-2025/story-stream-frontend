@@ -8,14 +8,14 @@ import { RouterProvider } from 'react-router'
 const queryClient = new QueryClient()
 
 const App: FC = () => (
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <RouterProvider router={appRouter} />
-      </AuthProvider>
-      <Toaster />
-    </QueryClientProvider>
-  </StrictMode>
-)
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={appRouter} />
+        </AuthProvider>
+        <Toaster />
+      </QueryClientProvider>
+    </StrictMode>
+  )
 
 export default App
