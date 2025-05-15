@@ -69,6 +69,11 @@ jobs:
         env:
           SONAR_TOKEN: c74b313e7130340815a236cb182cad58e414d94c
 
+      - name: ✅ Check Quality Gate Status
+        uses: SonarSource/sonarqube-quality-gate-action@v5
+        env:
+          SONAR_TOKEN: c74b313e7130340815a236cb182cad58e414d94c
+
   build:
     name: 🛠️ Build Application
     runs-on: ubuntu-latest
