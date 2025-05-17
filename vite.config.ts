@@ -26,6 +26,16 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     coverage: {
+      provider: 'v8',
+      exclude: [
+        '**/node_modules/**',
+        '**/*.test.ts',
+        '**/constants/**',
+        '**/enum/**',
+        '**/public/**',
+        '**/main.tsx',
+        '**/*.module.css'
+      ],
       reporter: ['text', 'lcov']
     }
   }

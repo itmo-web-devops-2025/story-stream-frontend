@@ -40,18 +40,25 @@ jobs:
           node-version: '20.x'
       - name: 📦 Install dependencies
         run: npm i
-      - name: 🧪 Execute tests
-        run: npm test
+      - name: 🧪 Execute tests with coverage
+        run: npm run test:cov
+
 
   sonar_scan:
     name: 🔎 SonarCloud Scan
     runs-on: ubuntu-latest
-    needs: [ lint, test ]
+    needs: [test]
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🔎 SonarQube Scan
+      - name: 📦 Install dependencies
+        run: npm i
+
+      - name: 🧪 Test and coverage
+        run: npm run test:cov
+
+      - name: 🔎 SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -151,23 +158,23 @@ jobs:
             docker compose --file ~/story-stream/story-stream-docker/docker-compose.yml up --force-recreate --build -d"
 
 
-  deploy_k8s:
-    name: 🚀 Deploy k8s
-    runs-on: ubuntu-latest
-    needs: [ docker ]
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Kubernetes Set Context
-        uses: azure/k8s-set-context@v4
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBECONFIG_DATA }}
-
-      - name: 📡 Deploy to Kubernetes cluster
-        run: |
-          kubectl set image deployment/frontend frontend=$IMAGE_NAME:latest --namespace=story-stream
-
-      - name: 🔁 Restart deployment
-        run: |
-          kubectl rollout restart deployment/frontend --namespace=story-stream
+#  deploy_k8s:
+#    name: 🚀 Deploy k8s
+#    runs-on: ubuntu-latest
+#    needs: [ docker ]
+#    if: github.ref == 'refs/heads/main'
+#
+#    steps:
+#      - name: Kubernetes Set Context
+#        uses: azure/k8s-set-context@v4
+#        with:
+#          method: kubeconfig
+#          kubeconfig: ${{ secrets.KUBECONFIG_DATA }}
+#
+#      - name: 📡 Deploy to Kubernetes cluster
+#        run: |
+#          kubectl set image deployment/frontend frontend=$IMAGE_NAME:latest --namespace=story-stream
+#
+#      - name: 🔁 Restart deployment
+#        run: |
+#          kubectl rollout restart deployment/frontend --namespace=story-stream
