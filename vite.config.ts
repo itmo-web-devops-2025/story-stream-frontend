@@ -33,6 +33,7 @@ export default defineConfig({
         '**/constants/**',
         '**/enum/**',
         '**/public/**',
+        '**/services/**',
         '**/main.tsx',
         '**/*.module.css'
       ],

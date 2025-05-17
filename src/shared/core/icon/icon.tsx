@@ -12,6 +12,7 @@ const Icon: FC<TProps> = ({ icon, className, isFilled = false, ...props }) => (
     className={cn(className, `lni lni-${icon}`, {
       [styles.iconFilled]: isFilled
     })}
+    data-testid='icon'
     {...props}
   ></i>
 )

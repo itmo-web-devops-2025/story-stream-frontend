@@ -7,6 +7,7 @@ type TProps = {
 const Heart: FC<TProps> = ({ isFill }) =>
   isFill ? (
     <svg
+      data-testid='heart-svg'
       width='24'
       height='24'
       viewBox='0 0 24 24'
@@ -21,6 +22,7 @@ const Heart: FC<TProps> = ({ isFill }) =>
     </svg>
   ) : (
     <svg
+      data-testid='heart-svg'
       width='24'
       height='24'
       viewBox='0 0 24 24'
