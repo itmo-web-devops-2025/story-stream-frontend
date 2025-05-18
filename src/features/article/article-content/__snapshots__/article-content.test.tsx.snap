@@ -1,0 +1,157 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ArticleContent /> snapshots > renders article for authenticated author 1`] = `
+<div>
+  <div
+    class="_article_33f2ba"
+  >
+    <div
+      class="_header_33f2ba"
+    >
+      <div>
+        <button>
+          Редактировать статью
+        </button>
+        <button>
+          Удалить статью
+        </button>
+      </div>
+      <div
+        class="_metaBlock_33f2ba"
+      >
+        <p
+          class="_author_33f2ba"
+        >
+          John
+        </p>
+        <div
+          class="_date_33f2ba"
+        >
+          <p
+            class="_date_33f2ba"
+          >
+            01 May, 2025
+             год
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="_body_33f2ba"
+    >
+      Sample body
+    </div>
+    <div
+      class="_comments_96bb91"
+    >
+      <h3
+        class="_commentsTitle_96bb91"
+      >
+        Комментарии
+      </h3>
+      <ul
+        class="_commentsList_96bb91"
+      />
+      <form
+        class="_form_8ca615"
+        novalidate=""
+      >
+        <div
+          class="_item_4aedc2"
+        >
+          <label
+            class="_label_4aedc2"
+            for="content"
+          />
+          <textarea
+            class="_textarea_48b611"
+            name="content"
+            placeholder="Напишите комментарий"
+          />
+        </div>
+        <button
+          class="_button_b92fba"
+          type="submit"
+        >
+          Отправить
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ArticleContent /> snapshots > renders article without controls for non-author 1`] = `
+<div>
+  <div
+    class="_article_33f2ba"
+  >
+    <div
+      class="_header_33f2ba"
+    >
+      <div
+        class="_metaBlock_33f2ba"
+      >
+        <p
+          class="_author_33f2ba"
+        >
+          John
+        </p>
+        <div
+          class="_date_33f2ba"
+        >
+          <p
+            class="_date_33f2ba"
+          >
+            01 May, 2025
+             год
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="_body_33f2ba"
+    >
+      Sample body
+    </div>
+    <div
+      class="_comments_96bb91"
+    >
+      <h3
+        class="_commentsTitle_96bb91"
+      >
+        Комментарии
+      </h3>
+      <ul
+        class="_commentsList_96bb91"
+      />
+      <form
+        class="_form_8ca615"
+        novalidate=""
+      >
+        <div
+          class="_item_4aedc2"
+        >
+          <label
+            class="_label_4aedc2"
+            for="content"
+          />
+          <textarea
+            class="_textarea_48b611"
+            name="content"
+            placeholder="Напишите комментарий"
+          />
+        </div>
+        <button
+          class="_button_b92fba"
+          type="submit"
+        >
+          Отправить
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ArticleContent /> snapshots > renders nothing when no article 1`] = `<div />`;

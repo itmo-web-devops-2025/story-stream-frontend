@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Articles snapshots > matches snapshot for Item 1`] = `<div />`;
+
+exports[`Articles snapshots > matches snapshot for List + wrapper 1`] = `<div />`;
