@@ -32,22 +32,20 @@ const ArticleList: FC = () => {
 
   const handlePageChange = (newPage: number) => setPage(newPage)
 
-  const total = responsePosts?.data.meta.total || 0
-  const pageSize = responsePosts?.data.meta.pageSize || 0
+  const total = responsePosts?.data.meta.total ?? 0
+  const pageSize = responsePosts?.data.meta.pageSize ?? 0
 
   return (
     <div className={styles.articleList}>
       <ArticleTools>
         {authStatus === AuthStatus.AUTHENTICATED && (
-          <>
-            <ButtonIcon
-              data-testid='add-button'
-              icon='plus'
-              onClick={handleAddButtonClick}
-            >
-              Добавить статью
-            </ButtonIcon>
-          </>
+          <ButtonIcon
+            data-testid='add-button'
+            icon='plus'
+            onClick={handleAddButtonClick}
+          >
+            Добавить статью
+          </ButtonIcon>
         )}
       </ArticleTools>
       {isLoading ? (

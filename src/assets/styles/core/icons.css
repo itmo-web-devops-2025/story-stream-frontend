@@ -13,7 +13,7 @@ Lineicons regular icon font
 /* base class */
 .lni {
   display: inline-block;
-  font: normal normal normal 24px/1 'Lineicons';
+  font: normal normal normal 24px/1 'Lineicons', sans-serif;
   color: inherit;
   flex-shrink: 0;
   -webkit-font-smoothing: antialiased;

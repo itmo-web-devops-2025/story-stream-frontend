@@ -23,14 +23,12 @@ const HeaderDefault: FC = () => {
           </>
         )}
         {authStatus === AuthStatus.AUTHENTICATED && (
-          <>
-            <NavMenu.Item
-              isButton={true}
-              buttonProps={{ onClick: () => logout() }}
-            >
-              Выйти
-            </NavMenu.Item>
-          </>
+          <NavMenu.Item
+            isButton={true}
+            buttonProps={{ onClick: () => logout() }}
+          >
+            Выйти
+          </NavMenu.Item>
         )}
       </NavMenu>
     </Header>

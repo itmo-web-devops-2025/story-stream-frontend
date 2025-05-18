@@ -85,7 +85,7 @@ const ArticleContent = ({ article }: ArticleProps) => {
       <CommentList comments={article.comments} />
       <Modal
         open={modalProps?.open}
-        title={modalProps?.title || null}
+        title={modalProps?.title ?? null}
         onClose={() => setModeForm(ModeForm.CLOSE)}
       >
         <FormArticle

@@ -1,7 +1,7 @@
 import { FormItemContext } from '@/contexts/form-item.context'
 import { DivProps } from '@/types/core/div-props.type'
 import { FormProps } from '@/types/core/form-props.type'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useMemo } from 'react'
 import {
   FieldValues,
   FormProvider,
@@ -26,8 +26,10 @@ const Item = ({
     formState: { errors }
   } = useFormContext()
 
+  const contextValue = useMemo(() => ({ name }), [name])
+
   return (
-    <FormItemContext.Provider value={{ name }}>
+    <FormItemContext.Provider value={contextValue}>
       <div className={styles.item} {...props}>
         <label className={styles.label} htmlFor={name}>
           {label}

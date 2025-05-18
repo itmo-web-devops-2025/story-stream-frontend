@@ -49,7 +49,6 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({
         className={cn(styles.dialog)}
         data-open={open}
         aria-labelledby='dialog-name'
-        role='dialog'
       >
         <h2 id='dialog-name' className={styles.header}>
           {title}

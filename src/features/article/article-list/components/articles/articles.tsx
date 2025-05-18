@@ -47,6 +47,7 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => {
                 [styles.selected]: true
               })}
               role='button'
+              tabIndex={0}
               onClick={handleToggleLike}
             >
               <Heart isFill={hasCurrentUser} />

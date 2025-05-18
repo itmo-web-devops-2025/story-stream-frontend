@@ -48,7 +48,7 @@ const ProfileSetting: FC = () => {
 
   useEffect(() => {
     if (user) {
-      setValue('bio', user.bio || '')
+      setValue('bio', user.bio ?? '')
     }
   }, [setValue, user])
 
