@@ -9,7 +9,7 @@ import {
 import { useFormContext } from 'react-hook-form'
 import styles from './textarea.module.css'
 
-type TProps = {} & DetailedHTMLProps<
+type TProps = DetailedHTMLProps<
   TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 >
