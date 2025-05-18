@@ -22,13 +22,13 @@ const schema = z.object({
   body: z.string().min(50, 'Минимальная длина текста 50 символа')
 })
 
-type TProps = {
+export type FormArticleProps = {
   mode: ModeForm
   article?: Post
   onSetModeForm?: Dispatch<SetStateAction<ModeForm>>
 }
 
-const FormArticle = ({ mode, article, onSetModeForm }: TProps) => {
+const FormArticle = ({ mode, article, onSetModeForm }: FormArticleProps) => {
   const navigate = useNavigate()
   const isEditMode = mode === ModeForm.EDIT
   const isAddMode = mode === ModeForm.ADD

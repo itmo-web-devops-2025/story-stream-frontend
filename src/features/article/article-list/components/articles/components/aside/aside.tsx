@@ -5,12 +5,12 @@ import { Post } from '@/types/post/post.interface'
 
 import styles from './aside.module.css'
 
-type TProps = {
+export type AsideProps = {
   posts?: Post[]
   paginationProps?: PaginationProps
 }
 
-const Aside = ({ posts, paginationProps }: TProps) => (
+const Aside = ({ posts, paginationProps }: AsideProps) => (
   <aside aria-label='Оглавление' className={styles.aside}>
     {paginationProps && <Pagination {...paginationProps} />}
     <ol className={styles.asideList}>

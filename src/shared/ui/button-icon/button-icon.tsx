@@ -8,14 +8,14 @@ import type {
 } from 'react'
 import styles from './button-icon.module.css'
 
-type TProps = {
+export type ButtonIconProps = {
   icon: string
 } & DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >
 
-const ButtonIcon: FC<PropsWithChildren<TProps>> = ({
+const ButtonIcon: FC<PropsWithChildren<ButtonIconProps>> = ({
   icon,
   className,
   children,

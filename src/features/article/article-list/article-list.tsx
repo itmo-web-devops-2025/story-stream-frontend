@@ -40,7 +40,11 @@ const ArticleList: FC = () => {
       <ArticleTools>
         {authStatus === AuthStatus.AUTHENTICATED && (
           <>
-            <ButtonIcon icon='plus' onClick={handleAddButtonClick}>
+            <ButtonIcon
+              data-testid='add-button'
+              icon='plus'
+              onClick={handleAddButtonClick}
+            >
               Добавить статью
             </ButtonIcon>
           </>
@@ -52,7 +56,11 @@ const ArticleList: FC = () => {
         <Articles posts={posts}>
           <Articles.List>
             {posts.map((post) => (
-              <Articles.Item key={post.id} article={post} />
+              <Articles.Item
+                key={post.id}
+                article={post}
+                data-testid='article-item'
+              />
             ))}
           </Articles.List>
           <Aside
