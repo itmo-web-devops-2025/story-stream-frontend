@@ -27,15 +27,21 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     coverage: {
       provider: 'v8',
+      all: true,
+      include: ['src/**/*.{ts,tsx}'],
       exclude: [
         '**/node_modules/**',
-        '**/*.test.ts',
-        '**/constants/**',
-        '**/enum/**',
-        '**/public/**',
-        '**/services/**',
-        '**/main.tsx',
-        '**/*.module.css'
+        'src/main.tsx',
+        'src/**/*.d.ts',
+        'src/types/**',
+        'src/enum/**',
+        'src/constants/**',
+        'src/config/**',
+        '**/*.test.{ts,tsx}',
+        '**/*.module.css',
+        '**/*.type.ts',
+        '**/*.constant.ts',
+        '**/*.router.tsx'
       ],
       reporter: ['text', 'lcov'],
       thresholds: {

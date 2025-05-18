@@ -2,7 +2,7 @@ import { AppConfig } from '@/config/app.config'
 import {
   getFromLocalStorage,
   saveToLocalStorage
-} from '@/utils/local-storage.utl'
+} from '@/utils/local-storage.util'
 
 const API_URL_KEY = 'API_URL'
 

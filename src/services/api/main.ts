@@ -1,6 +1,6 @@
 import { ACCESS_TOKEN } from '@/constants/core/local-storage-keys.constant'
 import { getApiBaseUrl } from '@/utils/get-api-base-url.util'
-import { getFromLocalStorage } from '@/utils/local-storage.utl'
+import { getFromLocalStorage } from '@/utils/local-storage.util'
 import axios from 'axios'
 
 export const apiClient = axios.create({

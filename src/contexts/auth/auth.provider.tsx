@@ -8,7 +8,7 @@ import {
   getFromLocalStorage,
   removeFromLocalStorage,
   saveToLocalStorage
-} from '@/utils/local-storage.utl'
+} from '@/utils/local-storage.util'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
 import {
