@@ -47,7 +47,7 @@ const Pagination: FC<PaginationProps> = ({
   const pages = generatePages()
   return (
     <div className={styles.pagination}>
-      {pages.map((page, index) =>
+      {pages.map((page) =>
         typeof page === 'number' ? (
           <button
             key={page}
@@ -59,7 +59,7 @@ const Pagination: FC<PaginationProps> = ({
             {page}
           </button>
         ) : (
-          <span key={`ellipsis-${index}`} className={styles.ellipsis}>
+          <span key={page} className={styles.ellipsis}>
             {page}
           </span>
         )

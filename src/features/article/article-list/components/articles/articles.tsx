@@ -42,17 +42,22 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => {
             </Link>
           </h2>
           <div className={styles['footer-things']}>
-            <div
+            <button
+              type='button'
               className={cn(styles['footer-item'], {
-                [styles.selected]: true
+                [styles.selected]: hasCurrentUser
               })}
-              role='button'
-              tabIndex={0}
+              aria-pressed={hasCurrentUser}
               onClick={handleToggleLike}
             >
               <Heart isFill={hasCurrentUser} />
-              <span>{article.likes.length}</span>
-            </div>
+              <span aria-hidden='true'>{article.likes.length}</span>
+              <span className='visually-hidden'>
+                {hasCurrentUser
+                  ? `Убрать лайк, всего лайков: ${article.likes.length}`
+                  : `Поставить лайк, всего лайков: ${article.likes.length}`}
+              </span>
+            </button>
             <div className={cn(styles['footer-item'], styles.commentButton)}>
               <Icon icon='comment-1' />
               <span>{article.comments.length}</span>
@@ -79,7 +84,6 @@ const List = ({ children }: { children: ReactNode }) => (
 )
 
 type Props = {
-  posts?: Post[]
   children?: ReactNode
 }
 
