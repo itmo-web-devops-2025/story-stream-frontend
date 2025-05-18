@@ -51,7 +51,7 @@ const ArticleList: FC = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <Articles posts={posts}>
+        <Articles>
           <Articles.List>
             {posts.map((post) => (
               <Articles.Item
