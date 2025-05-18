@@ -1,32 +1,61 @@
+import { AuthProvider } from '@/contexts/auth/auth.provider'
+import { useAuth } from '@/contexts/auth/use-auth.hook'
+import { AuthStatus } from '@/enum/core/auth-status.enum'
+import { useGetPost } from '@/services/api/post.api'
+import { Post } from '@/types/post/post.interface'
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { MemoryRouter, Route, Routes } from 'react-router'
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest'
+import ArticlePage from './article-page'
 
-import ArticlePage from './article-page.tsx'
-import { AuthProvider } from '../../contexts/auth/auth.provider.tsx' // поправь путь, если другой
-
-// Мок для useGetPost
+// Мок хука useGetPost
 vi.mock('@/services/api/post.api', () => ({
-  useGetPost: (articleId: string) => ({
-    data: {
-      data: {
-        id: articleId,
-        title: 'Test Article Title',
-        content: 'Test content'
-      }
-    }
-  })
+  __esModule: true,
+  useGetPost: vi.fn()
 }))
 
-// Мок для ArticleContent
+// Мок хука useAuth
+vi.mock('@/contexts/auth/use-auth.hook', () => ({
+  __esModule: true,
+  useAuth: vi.fn()
+}))
+
+// Мок компонента ArticleContent
 vi.mock('@/features/article/article-content/article-content', () => ({
   __esModule: true,
-  default: ({ article }: { article: any }) => (
-    <div data-testid='article-content'>{article?.content}</div>
+  default: ({ article }: { article: Post }) => (
+    <div data-testid='article-content'>{article.body}</div>
   )
 }))
 
+const useGetPostMock = useGetPost as Mock
+const useAuthMock = useAuth as Mock
+
 describe('ArticlePage', () => {
+  const samplePost: Post = {
+    id: '123',
+    title: 'Test Article Title',
+    body: 'Test content',
+    likes: [],
+    favoritesCount: 0,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    deletedAt: new Date(),
+    user: { id: 'u1', username: 'author' },
+    comments: []
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+    // Пользователь всегда авторизован
+    useAuthMock.mockReturnValue({ authStatus: AuthStatus.AUTHENTICATED })
+    // Мокаем ответ хука
+    useGetPostMock.mockReturnValue({
+      data: { data: samplePost },
+      isLoading: false
+    })
+  })
+
   it('renders the article page with fetched post', () => {
     render(
       <MemoryRouter initialEntries={['/article/123']}>
@@ -38,7 +67,8 @@ describe('ArticlePage', () => {
       </MemoryRouter>
     )
 
-    expect(screen.getByText('Test Article Title')).toBeDefined()
+    // Проверяем заголовок и содержимое через ArticleContent
+    expect(screen.getByText('Test Article Title')).toBeInTheDocument()
     expect(screen.getByTestId('article-content')).toHaveTextContent(
       'Test content'
     )

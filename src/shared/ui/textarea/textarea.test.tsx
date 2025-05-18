@@ -1,10 +1,9 @@
-// textarea.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
-import { useForm, FormProvider } from 'react-hook-form'
 import { FormItemContext } from '@/contexts/form-item.context'
-import Textarea from './textarea'
+import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { describe, expect, it, vi } from 'vitest'
+import Textarea from './textarea'
 
 const Wrapper = ({
   children,
@@ -95,7 +94,7 @@ describe('Textarea', () => {
       const methods = useForm()
       return (
         <FormProvider {...methods}>
-          <FormItemContext.Provider value={null}>
+          <FormItemContext.Provider value={{ name: null }}>
             <Textarea />
           </FormItemContext.Provider>
         </FormProvider>
