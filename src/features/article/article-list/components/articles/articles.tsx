@@ -2,7 +2,6 @@ import { PathRoute } from '@/constants/core/path-route.constant'
 import { useAuth } from '@/contexts/auth/use-auth.hook'
 import { useLikePostMutation } from '@/services/api/post.api'
 import Icon from '@/shared/core/icon/icon'
-import Heart from '@/shared/icons/heart/heart'
 import Text from '@/shared/ui/text/text'
 import { Post } from '@/types/post/post.interface'
 import { dateFormat } from '@/utils/date-format.util'
@@ -50,13 +49,8 @@ const Item: FC<PropsWithChildren<ItemProps>> = ({ article }) => {
               aria-pressed={hasCurrentUser}
               onClick={handleToggleLike}
             >
-              <Heart isFill={hasCurrentUser} />
+              <Icon icon='heart' isFilled={hasCurrentUser} />
               <span aria-hidden='true'>{article.likes.length}</span>
-              <span className='visually-hidden'>
-                {hasCurrentUser
-                  ? `Убрать лайк, всего лайков: ${article.likes.length}`
-                  : `Поставить лайк, всего лайков: ${article.likes.length}`}
-              </span>
             </button>
             <div className={cn(styles['footer-item'], styles.commentButton)}>
               <Icon icon='comment-1' />

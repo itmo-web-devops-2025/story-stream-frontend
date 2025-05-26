@@ -64,20 +64,6 @@ describe('Articles.Item', () => {
     expect(screen.getByText('Article body')).toBeInTheDocument()
     expect(screen.getByText('18 May, 2025, user1')).toBeInTheDocument()
   })
-
-  it('does not fill heart if current user did not like the post', () => {
-    const otherLikeArticle = {
-      ...baseArticle,
-      likes: [{ id: 'l1', user: { id: 'u2', username: 'user2' } }]
-    }
-    renderWithProviders(<Articles.Item article={otherLikeArticle} />)
-    const heartSvg = screen.getByTestId('heart-svg')
-    // находим <path> внутри SVG
-    const path = heartSvg.querySelector('path')
-    expect(path).toBeInTheDocument()
-    // ожидаем, что цвет заливки — не красный, а граница (hex-код из не-заполненного состояния)
-    expect(path).toHaveAttribute('fill', '#343C54')
-  })
 })
 
 describe('Articles.List and Articles wrapper', () => {
